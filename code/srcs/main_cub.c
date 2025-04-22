@@ -3,10 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: asobrinh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/04 21:19:06 by aliberal          #+#    #+#             */
-/*   Updated: 2025/04/21 23:28:43 by aliberal         ###   ########.fr       */
+/*   Created: 2025/03/29 13:48:16 by asobrinh          #+#    #+#             */
+/*   Updated: 2025/03/29 13:48:18 by asobrinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Cub3d.h"
+
+int main()
+{
+    t_structere abertura;
+
+    inicializar(&abertura);
+    mlx_hook(abertura.janela, 17, 0, feichada, &abertura);
+    mlx_loop(abertura.mlx);
+
+    return (0);
+}
