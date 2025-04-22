@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   valid_texturas.c                                   :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asobrinh <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/29 17:40:56 by asobrinh          #+#    #+#             */
-/*   Updated: 2025/03/29 17:40:58 by asobrinh         ###   ########.fr       */
+/*   Created: 2024/05/14 12:11:45 by aliberal          #+#    #+#             */
+/*   Updated: 2024/05/15 22:21:44 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cub3d.h"
+#include "libft.h"
 
-void valid_arquivo(char nome, t_textur *padrao)
+size_t	ft_strlen(const char *str)
 {
+	size_t	count;
 
-}
-int verifi_textura(char *lin, t_textur *padrao)
-{
-	return(0);
-}
-int validar_local_textura(char *local)
-{
-	return(0);
+	if (!str)
+		return (0);
+	count = 0;
+	while (str[count] != '\0')
+		count++;
+	return (count);
 }

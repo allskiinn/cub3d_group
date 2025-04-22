@@ -1,14 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   valid_mapa_texture.c                               :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asobrinh <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/29 15:07:35 by asobrinh          #+#    #+#             */
-/*   Updated: 2025/03/29 15:07:36 by asobrinh         ###   ########.fr       */
+/*   Created: 2024/05/15 18:08:17 by aliberal          #+#    #+#             */
+/*   Updated: 2024/05/15 20:47:35 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cub3d.h"
+#include "libft.h"
 
+t_list	*ft_lstlast(t_list *lst)
+{
+	t_list	*aux;
+
+	if (!lst)
+		return (NULL);
+	aux = lst;
+	while (aux->next)
+		aux = aux->next;
+	return (aux);
+}

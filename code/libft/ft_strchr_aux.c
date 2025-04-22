@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strchr_aux.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asobrinh <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/29 13:48:16 by asobrinh          #+#    #+#             */
-/*   Updated: 2025/03/29 13:48:18 by asobrinh         ###   ########.fr       */
+/*   Created: 2024/07/16 12:00:40 by aliberal          #+#    #+#             */
+/*   Updated: 2024/07/16 12:01:05 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cub3d.h"
+#include "libft.h"
 
-int main()
+char	*ft_strchr_aux(const char *s, int c)
 {
-    t_structere abertura;
-
-    inicializar(&abertura);
-    mlx_hook(abertura.janela, 17, 0, feichada, &abertura);
-    mlx_loop(abertura.mlx);
-
-    return (0);
+	if (s == NULL)
+		return (NULL);
+	while (*s != '\0')
+	{
+		if (*s == c)
+			return ((char *)s);
+		s++;
+	}
+	if (*s == '\0' && c == '\0')
+		return ((char *)s);
+	return (NULL);
 }
