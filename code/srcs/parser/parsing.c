@@ -6,33 +6,33 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 00:23:21 by aliberal          #+#    #+#             */
-/*   Updated: 2025/04/23 00:33:39 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/05/04 18:33:59 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../includes/cub3d.h"
 
-int		ft_parsing_map(char *file, t_map *map)
+int		ft_parsing_map(char *file, t_cub *cub)
 {
 	int			fd;
-	int			ret;
+	int			status;
 	char		*str;
 
-	ret = 1;
-	str = NULL;
 	fd = open(file, O_RDONLY);
-	if (!(map->map = malloc(sizeof(char*) * map->nblines)))
+	if (!(cub->map.grid = malloc(sizeof(char*) * cub->map.height)))
 		return (0);
-	while (ret != 0)
+	status = 1;
+	str = NULL;
+	while (status != 0)
 	{
-		ret = get_next_line(fd, &str, map);
-		if (map->insidemap == 1 && ft_lignevide(str) == 0 &&
-				map->count < map->nblines)
-			map->lignevide = 1;
-		if ((map->insidemap = ft_is_map(str, map)) == 1)
+		status = get_next_line(fd, &str, cub);
+		if (cub->map.insidemap == 1 && ft_emptyline(str) == 0 &&
+				cub->map.count < cub->map.height)
+			cub->map.emptyline = 1;
+		if ((cub->map.insidemap = ft_is_map(str, cub)) == 1)
 		{
-			map->count++;
-			ft_copy_map(str, map);
+			cub->map.count++;
+			ft_copy_map(str, cub);
 		}
 		free(str);
 	}
@@ -40,31 +40,32 @@ int		ft_parsing_map(char *file, t_map *map)
 	return (0);
 }
 
-void	ft_parsing(char *file, t_map *map)
+void	ft_parsing(char *file, t_cub *cub)
 {
 	int			fd;
-	int			ret;
+	int			status;
 	char		*str;
 
-	ret = 1;
 	str = NULL;
+	status = 1;
 	if ((fd = open(file, O_DIRECTORY)) != -1)
-		ft_error(map, "Invalide : is a directory\n");
+		ft_error(cub, "Invalide: is a directory\n");
 	if ((fd = open(file, O_RDONLY)) == -1)
-		ft_error(map, "file .cub invalide\n");
-	map->error = 0;
-	while (ret != 0)
+		ft_error(cub, "Invalid .cub file\n");
+	cub->error = 0;
+	while (status != 0)
 	{
-		ret = get_next_line(fd, &str, map);
-		if (map->error == 2)
-			ft_error(map, "La partie parsing detecte une erreur\n");
-		ft_color_resolution(&str, map);
-		ft_texture(str, map);
-		ft_map(str, map);
+		status = get_next_line(fd, &str, cub);
+		if (cub->error == 2)
+			ft_error(cub, "The parsing part detects an error\n");
+		ft_color_resolution(&str, cub);
+		ft_texture(str, cub);
+		ft_map(str, cub);
 		free(str);
+		str = NULL;
 	}
 	close(fd);
-	if (map->map_height == 0 || map->map_width == 0)
-		ft_error(map, "Map absente\n");
-	ft_parsing_map(file, map);
+	if (cub->map.height == 0 || cub->map.width == 0)
+		ft_error(cub, "Map absente\n");
+	ft_parsing_map(file, cub);
 }

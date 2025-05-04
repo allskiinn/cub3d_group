@@ -6,32 +6,65 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 00:35:04 by aliberal          #+#    #+#             */
-/*   Updated: 2025/04/23 00:39:44 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/05/04 16:49:29 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../includes/cub3d.h"
 
-void	ft_error(t_map *map, char *str)
+int	ft_verify_errors(t_cub *cub)
+{
+	if (ft_walls(cub) == 1)
+	{
+		ft_error(cub, "Map not surrounded by 1\n");
+		return (1);
+	}
+	if (cub->player.dir == 'x')
+	{
+		ft_error(cub, "No player\n");
+		return (1);
+	}
+	if (cub->checkColor != 6)
+	{
+		ft_error(cub, "Bad F or C data\n");
+		return (1);
+	}
+	if (cub->player.multiplayer == 1)
+	{
+		ft_error(cub, "More than one player\n");
+		return (1);
+	}
+	if (cub->map.emptyline == 1)
+	{
+		ft_error(cub, "empty line on the map\n");
+		return (1);
+	}
+	if (cub->map.wrongcharmap == 2)
+	{
+		ft_error(cub, "Invalid characters on the map\n");
+		return (1);
+	}
+	return (0);
+}
+
+void	ft_error(t_cub *cub, char *str)
 {
 	int i;
 
 	i = -1;
 	write(1, "Error\n", 6);
 	write(1, str, ft_strlen(str));
-	if (map->texture_north)
-		free(map->texture_north);
-	if (map->texture_south)
-		free(map->texture_south);
-	if (map->texture_west)
-		free(map->texture_west);
-	if (map->texture_east)
-		free(map->texture_east);
-	if (map->map)
+	if (cub->textures.NO)
+		free(cub->textures.NO);
+	if (cub->textures.SO)
+		free(cub->textures.SO);
+	if (cub->textures.WE)
+		free(cub->textures.WE);
+	if (cub->textures.EA)
+		free(cub->textures.EA);
+	if (cub->map.grid)
 	{
-		while (++i < map->map_height)
-			free(map->map[i]);
+		while (++i < cub->map.height)
+			free(cub->map.grid[i]);
 	}
-	if (map->map)
-		free(map->map);
 }

@@ -6,49 +6,91 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 21:19:04 by aliberal          #+#    #+#             */
-/*   Updated: 2025/04/23 00:32:13 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/05/04 21:03:35 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
+# include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
 # include <fcntl.h>
 # include "../minilibx-linux/mlx.h"
+# define BUFFER_SIZE	4096
 
-// Para representar cores RGB
-typedef struct s_color {
-    int r;
-    int g;
-    int b;
-} t_color;
+typedef struct s_player
+{
+    int x;
+    int y;
+    char dir;
+    int multiplayer;
+} t_player;
 
-// Estrutura principal para dados do mapa
+typedef struct s_texture
+{
+    char *NO;
+    char *SO;
+    char *WE;
+    char *EA;
+} t_texture;
+
 typedef struct s_map {
-    // Texturas
-    char *texture_north;
-    char *texture_south;
-    char *texture_west;
-    char *texture_east;
-
-    // Cores
-    t_color floor_color;
-    t_color ceiling_color;
-
-    // Mapa
-    char **map;         // Array de strings (linhas do mapa)
-    int map_width;
-    int map_height;
-
-    // Posição inicial do jogador
-    int player_x;
-    int player_y;
-    char player_dir;    // 'N', 'S', 'E', 'W'
-
-    int error;
+    char **grid;
+    int width;
+    int height;
+    int insidemap;
+    int count;
+    int wrongcharmap;
+    int emptyline;
 } t_map;
 
+typedef struct s_cub {
+    int rx;
+    int ry;
+    t_texture textures;
+    int f_color[3];
+    int c_color[3];
+    int sum;
+    int checkColor;
+    t_map map;
+    t_player player;
+    int error;
+    int i;
+    int j;
+} t_cub;
+
+void	ft_initialisation(t_cub *cub);
+int		ft_cub(char *str, t_cub *cub);
+
+void	ft_parsing(char *file, t_cub *cub);
+int		ft_parsing_map(char *file, t_cub *cub);
+void	ft_texture(char *str, t_cub *cub);
+int		ft_path_texture(char *str, char **texture, t_cub *cub, int j);
+void	ft_map(char *str, t_cub *cub);
+int		ft_is_map(char *str, t_cub *cub);
+int		ft_copy_map(char *str, t_cub *cub);
+int		ft_start(char c, t_cub *cub, int i, int j);
+void	ft_color_resolution(char **str, t_cub *cub);
+
+int		ft_atoi2(const char *str, t_cub *cub);
+void	ft_atoi3(const char *str, t_cub *cub, char type);
+int		ft_charinstr(char *str, char c);
+int		ft_emptyline(char *str);
+int		ft_nb_comma(const char *str);
+int		ft_strlen2(char *str);
+int		ft_walls(t_cub *cub);
+
+void	ft_error(t_cub *cub, char *str);
+int     ft_verify_errors(t_cub *cub);
+
+int		get_next_line(int fd, char **line, t_cub *cub);
+char		*ft_subbuff(char *buff, int start, int len);
+char		*ft_strjoin(char *s1, char *s2);
+char		*ft_substr(char const *s, unsigned int start, size_t len);
+int			ft_strlen(char *str);
+
+int check_color(int color[3]);
 
 #endif

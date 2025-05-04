@@ -6,12 +6,12 @@
 #    By: aliberal <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/29 13:47:16 by asobrinh          #+#    #+#              #
-#    Updated: 2025/04/22 23:33:58 by aliberal         ###   ########.fr        #
+#    Updated: 2025/05/04 04:10:13 by aliberal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # BASIC
-CC = gcc -g
+CC = cc -g
 CFLAGS = -Wall -Wextra -Werror -g3
 RM = rm -rf
 LIBFT = libft.a
@@ -34,16 +34,18 @@ RED              := \033[1;31m
 BOLD             := \033[1;1m
 
 # FDF
-NAME = fdf
-SRCS =  ./src/connect_point.c \
-        ./src/functions_utils.c \
-        ./src/functions_utils2.c \
-        ./src/ft_error.c \
-        ./src/init_struct.c \
-        ./src/check_key.c \
-        ./src/printf_menu.c \
-        ./src/read_file.c \
-        ./src/fdf.c
+NAME = cub3d
+SRCS =  ./srcs/error/error.c \
+        ./srcs/init/init.c \
+        ./srcs/parser/parsing.c \
+		./srcs/parser/parsing_color_resolution.c \
+		./srcs/parser/parsing_map.c \
+		./srcs/parser/parsing_texture.c \
+		./srcs/utils/aux1.c \
+		./srcs/utils/aux2.c \
+		./srcs/utils/get_next_line.c \
+		./srcs/utils/get_next_line_utils.c \
+        ./srcs/main.c
 
 OBJSDIR = objectos
 OBJS = $(addprefix $(OBJSDIR)/,$(SRCS:.c=.o))
@@ -51,18 +53,14 @@ OBJS = $(addprefix $(OBJSDIR)/,$(SRCS:.c=.o))
 # MAKE
 all: $(NAME)
 
-$(LIBFT):
-	@make -C $(LIBFTDIR)
-	@cp $(LIBFTDIR)/$(LIBFT) .
-
 $(MINILIBX):
 	@make -C $(MINILIBXDIR)
 	@cp $(MINILIBXDIR)/$(MINILIBX) .
 
-$(NAME): $(LIBFT) $(MINILIBX) $(OBJS)
+$(NAME): $(MINILIBX) $(OBJS)
 	@$(CLEAR)
 	@echo "$(GREEN)$(BOLD)Criando executavel...$(RESET)"
-	$(CC) $(CFLAGS) $(OBJS) -L. -lft -L. -lmlx $(WINDOWS_MATH) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) -L. -L. -lmlx $(WINDOWS_MATH) -o $(NAME)
 	@echo "$(GREEN)$(BOLD)Executavel criado!$(RESET)"
 
 $(OBJSDIR)/%.o: %.c
@@ -73,7 +71,6 @@ clean:
 	@$(CLEAR)
 	@echo "$(YELLOW)$(BOLD)Removendo objectos...$(RESET)"
 	$(RM) $(OBJSDIR)
-	@make -C $(LIBFTDIR) clean
 	@make -C $(MINILIBXDIR) clean
 	@echo "$(YELLOW)$(BOLD)Objectos removidos!$(RESET)"
 
@@ -81,8 +78,7 @@ fclean: clean
 	@$(CLEAR)
 	@echo "$(RED)$(BOLD)Removendo executavel...$(RESET)"
 	$(RM) $(NAME)
-	$(RM) $(LIBFT) $(MINILIBX)
-	@make -C $(LIBFTDIR) fclean
+	$(RM) $(MINILIBX)
 	@echo "$(RED)$(BOLD)Executavel removido!$(RESET)"
 
 re: fclean all
@@ -102,8 +98,6 @@ norm:
 	@echo "$(GREEN)$(BOLD)Norminette!$(RESET)"
 	norminette ./includes/*
 	norminette ./srcs/*
-	norminette ./libft/*.c
-	norminette ./libft/*.h
 
 .PHONY: clean fclean all re
 
