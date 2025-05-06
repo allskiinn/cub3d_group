@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 21:19:04 by aliberal          #+#    #+#             */
-/*   Updated: 2025/05/04 21:03:35 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/05/06 04:25:33 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,6 @@ char		*ft_substr(char const *s, unsigned int start, size_t len);
 int			ft_strlen(char *str);
 
 int check_color(int color[3]);
+int		ft_checkPlayer(t_cub *cub);
 
 #endif

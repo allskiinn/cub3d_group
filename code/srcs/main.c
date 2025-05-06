@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 13:48:16 by asobrinh          #+#    #+#             */
-/*   Updated: 2025/05/04 20:09:16 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/05/06 02:33:53 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int		main(int ac, char **av)
 	if (ac == 2)
 	{
 		ft_cub(av[1], &cub);
-		//if (!ft_verify_errors(&cub))
-		//{
+		if (!ft_verify_errors(&cub))
+		{
 			printf("\n\n\n################ DADOS DO MAPA ################");
 			printf("\n RESOLUCAO EM X: %d", cub.rx);
 			printf("\n RESOLUCAO EM Y: %d", cub.ry);
@@ -41,7 +41,7 @@ int		main(int ac, char **av)
 				printf("\n");	
 			}
 			ft_error(&cub, "Finish");
-		//}
+		}
 	}
 	else
 		write(1, "Error\nArguments invalides\n", 27);

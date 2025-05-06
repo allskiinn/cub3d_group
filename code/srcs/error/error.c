@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 00:35:04 by aliberal          #+#    #+#             */
-/*   Updated: 2025/05/04 16:49:29 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/05/06 04:27:37 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,11 @@ int	ft_verify_errors(t_cub *cub)
 	if (cub->map.wrongcharmap == 2)
 	{
 		ft_error(cub, "Invalid characters on the map\n");
+		return (1);
+	}
+	if (ft_checkPlayer(cub) == 1)
+	{
+		ft_error(cub, "Invalid characters around the starting point\n");
 		return (1);
 	}
 	return (0);
