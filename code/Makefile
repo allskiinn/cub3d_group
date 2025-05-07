@@ -36,6 +36,7 @@ BOLD             := \033[1;1m
 # FDF
 NAME = cub3d
 SRCS =  ./srcs/error/error.c \
+	./srcs/error/error_info_map.c \
         ./srcs/init/init.c \
         ./srcs/parser/parsing.c \
 		./srcs/parser/parsing_color_resolution.c \
@@ -43,6 +44,7 @@ SRCS =  ./srcs/error/error.c \
 		./srcs/parser/parsing_texture.c \
 		./srcs/utils/aux1.c \
 		./srcs/utils/aux2.c \
+		./srcs/utils/auxi3.c \
 		./srcs/utils/get_next_line.c \
 		./srcs/utils/get_next_line_utils.c \
         ./srcs/main.c

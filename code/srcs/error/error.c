@@ -6,58 +6,50 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 00:35:04 by aliberal          #+#    #+#             */
-/*   Updated: 2025/05/06 04:27:37 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/05/07 15:44:02 by asobrinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../includes/cub3d.h"
 
-int	ft_verify_errors(t_cub *cub)
+static	int ret(t_cub *cub,char *str)
 {
-	if (ft_walls(cub) == 1)
+	ft_error(cub, str);
+	return (1);
+}
+
+int ft_verify_errors(t_cub *cub)
+{
+	int	error;
+	
+	error = ft_walls(cub);
+	if (error != 0)
 	{
-		ft_error(cub, "Map not surrounded by 1\n");
+		border_map_errors(cub, error);
 		return (1);
 	}
 	if (cub->player.dir == 'x')
-	{
-		ft_error(cub, "No player\n");
-		return (1);
-	}
+		return (ret(cub, "Error\nNo player found in the map.\n"));
 	if (cub->checkColor != 6)
-	{
-		ft_error(cub, "Bad F or C data\n");
-		return (1);
-	}
+		return (ret(cub, "Error\nBad floor or ceiling color data.\n"));
 	if (cub->player.multiplayer == 1)
-	{
-		ft_error(cub, "More than one player\n");
-		return (1);
-	}
+		return (ret(cub, "Error\nMore than one player starting.\n"));
 	if (cub->map.emptyline == 1)
-	{
-		ft_error(cub, "empty line on the map\n");
-		return (1);
-	}
+		return (ret(cub, "Error\nEmpty line found inside map.\n"));
 	if (cub->map.wrongcharmap == 2)
-	{
-		ft_error(cub, "Invalid characters on the map\n");
-		return (1);
-	}
+		return (ret(cub, "Error\nInvalid characters found in the map.\n"));
 	if (ft_checkPlayer(cub) == 1)
-	{
-		ft_error(cub, "Invalid characters around the starting point\n");
-		return (1);
-	}
+		return (ret(cub, "Error\nInvalid characters around player.\n"));
+	if (ft_check_player_around(cub) == 1)
+		return (ret(cub, "Error\nSpace found adjacent player start.\n"));
 	return (0);
 }
 
 void	ft_error(t_cub *cub, char *str)
 {
-	int i;
+	int	i;
 
 	i = -1;
-	write(1, "Error\n", 6);
 	write(1, str, ft_strlen(str));
 	if (cub->textures.NO)
 		free(cub->textures.NO);

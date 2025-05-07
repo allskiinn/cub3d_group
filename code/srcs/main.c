@@ -15,12 +15,18 @@
 int		main(int ac, char **av)
 {
 	t_cub cub;
+	int i;
+	int y;
 
 	ft_initialisation(&cub);
 	if (ac == 2)
 	{
 		ft_cub(av[1], &cub);
-		if (!ft_verify_errors(&cub))
+		if (ft_verify_errors(&cub))
+		{
+		
+		}
+		else
 		{
 			printf("\n\n\n################ DADOS DO MAPA ################");
 			printf("\n RESOLUCAO EM X: %d", cub.rx);
@@ -34,13 +40,21 @@ int		main(int ac, char **av)
 			printf("\n\n NUMERO DE LINHAS: %d", cub.map.height);
 			printf("\n TAMANHO DA LINHA: %d", cub.map.width);
 			printf("\n\n POSICAO DO JOGADOR: X - %d | Y - %d", cub.player.x, cub.player.y);
-			printf("\n\n DIRECAO DO JOGADOR:  %c\n\n", cub.player.dir);
-			for (int i = 0; i < cub.map.height; i++){
-				for (int y = 0; y < cub.map.width; y++)
+			printf("\n\n DIRECAO DO JOGADOR:  %c\n\n", cub.player.dir);
+
+			i = 0;
+			while (i < cub.map.height)
+			{
+				y = 0;
+				while (y < cub.map.width)
+				{
 					printf("%c", cub.map.grid[i][y]);
-				printf("\n");	
+					y++;
+				}
+				printf("\n");
+				i++;
 			}
-			ft_error(&cub, "Finish");
+			printf("Finish\n");
 		}
 	}
 	else

@@ -94,4 +94,15 @@ int			ft_strlen(char *str);
 int check_color(int color[3]);
 int		ft_checkPlayer(t_cub *cub);
 
+//tratei da parte que faltava da validacao do mapa em relacao a borda e detro do mapa
+
+
+int		ft_check_player_around(t_cub *cub);
+
+
+int		ft_space(t_cub *cub, int x , int y);
+
+void	interior_map_errors(t_cub *cub, int error_code);
+void	border_map_errors(t_cub *cub, int error_code);
+
 #endif

@@ -95,45 +95,86 @@ int		ft_walls(t_cub *cub)
 	int j;
 
 	i = 0;
-	while (i < cub->map.height)
+	while (i < cub->map.width)
 	{
-		if (cub->map.grid[i][0] != '1')
+		if (cub->map.grid[0][i] == '0')
+			return (1);
+		if (cub->map.grid[0][i] == cub->player.dir)
+			return (2);
+		if (ft_space(cub, 0, i))
+			return (3);
+		i++;
+	}
+
+	i = 0;
+	while (i < cub->map.width)
+	{
+		if (cub->map.grid[cub->map.height - 1][i] == '0')
+			return (4);
+		if (cub->map.grid[cub->map.height - 1][i] == cub->player.dir)
+			return (5);
+		if (ft_space(cub, cub->map.height - 1, i))
+			return (6);
+		i++;
+	}
+
+	i = 1;
+	while (i < cub->map.height - 1)
+	{
+		if (cub->map.grid[i][0] == '0')
+			return (7);
+		if (cub->map.grid[i][0] == cub->player.dir)
+			return (8);
+		if (ft_space(cub, i, 0))
 		{
 			j = 0;
-			if (cub->map.grid[i][j] == ' ')
-			{
-				while (j <= (cub->map.width - 1) && (cub->map.grid[i][j] == ' '))
-					j++;
-				if (cub->map.grid[i][j] != '1')
-					return (1);
-			}
-			else
-				return (1);
-			
+			while (j < cub->map.width && ft_space(cub, i, j))
+				j++;
+			if (j == cub->map.width || cub->map.grid[i][j] != '1')
+				return (9);
 		}
 		i++;
 	}
+
+	i = 1;
+	while (i < cub->map.height - 1)
+	{
+		if (cub->map.grid[i][cub->map.width - 1] == '0')
+			return (10);
+		if (cub->map.grid[i][cub->map.width - 1] == cub->player.dir)
+			return (11);
+		if (ft_space(cub, i, cub->map.width - 1))
+		{
+			j = cub->map.width - 1;
+			while (j >= 0 && ft_space(cub, i, j))
+				j--;
+			if (j == -1 || cub->map.grid[i][j] != '1')
+				return (12);
+		}
+		i++;
+	}
+
 	i = 0;
 	while (i < cub->map.height)
 	{
-		if (cub->map.grid[i][cub->map.width - 1] != '1')
+		j = 0;
+		while (j < cub->map.width)
 		{
-			j = cub->map.width - 1;
-			if (cub->map.grid[i][j] == ' ')
+			if (cub->map.grid[i][j] == '0')
 			{
-				while (j != 0 && (cub->map.grid[i][j] == ' '))
-					j--;
-				if (cub->map.grid[i][j] != '1')
-					return (1);
+				if (i > 0 && ft_space(cub, i - 1, j))
+					return (13);
+				if (i < cub->map.height - 1 && ft_space(cub, i + 1, j))
+					return (14);
+				if (j > 0 && ft_space(cub, i, j - 1))
+					return (15);
+				if (j < cub->map.width - 1 && ft_space(cub, i, j + 1))
+					return (16);
 			}
-			else
-				return (1);
+			j++;
 		}
 		i++;
 	}
-	if (ft_walls_util(cub->map.grid[0]) == 1)
-		return (1);
-	if (ft_walls_util(cub->map.grid[cub->map.height - 1]) == 1)
-		return (1);
+
 	return (0);
 }
