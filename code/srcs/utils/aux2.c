@@ -101,8 +101,6 @@ int		ft_walls(t_cub *cub)
 			return (1);
 		if (cub->map.grid[0][i] == cub->player.dir)
 			return (2);
-		if (ft_space(cub, 0, i))
-			return (3);
 		i++;
 	}
 
@@ -113,8 +111,6 @@ int		ft_walls(t_cub *cub)
 			return (4);
 		if (cub->map.grid[cub->map.height - 1][i] == cub->player.dir)
 			return (5);
-		if (ft_space(cub, cub->map.height - 1, i))
-			return (6);
 		i++;
 	}
 
@@ -160,7 +156,7 @@ int		ft_walls(t_cub *cub)
 		j = 0;
 		while (j < cub->map.width)
 		{
-			if (cub->map.grid[i][j] == '0')
+			if (cub->map.grid[i][j] == '0' || cub->map.grid[i][j] == cub->player.dir)
 			{
 				if (i > 0 && ft_space(cub, i - 1, j))
 					return (13);
