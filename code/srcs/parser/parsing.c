@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 00:23:21 by aliberal          #+#    #+#             */
-/*   Updated: 2025/05/04 18:33:59 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/05/07 16:31:33 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int		ft_parsing_map(char *file, t_cub *cub)
 	return (0);
 }
 
-void	ft_parsing(char *file, t_cub *cub)
+int	ft_parsing(char *file, t_cub *cub)
 {
 	int			fd;
 	int			status;
@@ -56,8 +56,10 @@ void	ft_parsing(char *file, t_cub *cub)
 	while (status != 0)
 	{
 		status = get_next_line(fd, &str, cub);
-		if (cub->error == 2)
+		if (cub->error == 2){
 			ft_error(cub, "The parsing part detects an error\n");
+			return (1);
+		}
 		ft_color_resolution(&str, cub);
 		ft_texture(str, cub);
 		ft_map(str, cub);
@@ -68,4 +70,5 @@ void	ft_parsing(char *file, t_cub *cub)
 	if (cub->map.height == 0 || cub->map.width == 0)
 		ft_error(cub, "Map absente\n");
 	ft_parsing_map(file, cub);
+	return 0;
 }

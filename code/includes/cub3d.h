@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 21:19:04 by aliberal          #+#    #+#             */
-/*   Updated: 2025/05/06 04:25:33 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/05/07 16:32:26 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ typedef struct s_cub {
 void	ft_initialisation(t_cub *cub);
 int		ft_cub(char *str, t_cub *cub);
 
-void	ft_parsing(char *file, t_cub *cub);
+int	    ft_parsing(char *file, t_cub *cub);
 int		ft_parsing_map(char *file, t_cub *cub);
 void	ft_texture(char *str, t_cub *cub);
 int		ft_path_texture(char *str, char **texture, t_cub *cub, int j);
