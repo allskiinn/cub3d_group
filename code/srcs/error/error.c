@@ -12,7 +12,7 @@
 
 #include "./../../includes/cub3d.h"
 
-static	int ret(t_cub *cub,char *str)
+int ret(t_cub *cub,char *str)
 {
 	ft_error(cub, str);
 	return (1);

@@ -12,50 +12,77 @@
 
 #include "./../../includes/cub3d.h"
 
-int		ft_path_texture(char *str, char **texture, t_cub *cub, int j)
+int ft_texture_error(t_cub *cub, char *message)
 {
-	cub->i = 0;
-	if (*texture != NULL)
-	{
-		cub->error = 2;
-		return (0);
-	}
-	if (ft_charinstr(str, '.') == 0 || ft_charinstr(str, '/') == 0
-			|| ft_strlen2(str) <= 2)
-		cub->error = 2;
-	while (str[j] != '.')
-	{
-		if (str[j] != ' ' && str[j] != '.')
-			cub->error = 2;
-		j++;
-	}
-	if (!(*texture = (char *)(malloc(sizeof(char) * (ft_strlen2(str) + 1)))))
-		cub->error = 2;
-	while (str[j] != '\0')
-	{
-		(*texture)[cub->i] = str[j];
-		cub->i++;
-		j++;
-	}
-	(*texture)[cub->i] = '\0';
-	return (0);
+
+    return (ret(cub, message));
 }
 
-void	ft_texture(char *str, t_cub *cub)
+int ft_check_extension(const char *fname, const char *extensin) 
 {
-	int			i;
+	const char	*ver;
+	
+	if (fname == NULL || extensin == NULL) 
+	{
+        		return (0);
+        	}
+    	ver = strrchr(fname, '.');
+    	if (ver == NULL || ver == fname) 
+    	{
+        		return (0);
+    	}
+    	return (strcmp(ver + 1, extensin) == 0);
+}
 
-	i = 0;
-	if (str && str[i] == 'S' && str[i + 1] == 'O')
-		ft_path_texture(str, &cub->textures.SO, cub, 2);
-	else if (str && str[i] == 'N' && str[i + 1] == 'O')
-		ft_path_texture(str, &cub->textures.NO, cub, 2);
-	else if (str && str[i] == 'E' && str[i + 1] == 'A')
-		ft_path_texture(str, &cub->textures.EA, cub, 2);
-	else if (str && str[i] == 'W' && str[i + 1] == 'E')
-		ft_path_texture(str, &cub->textures.WE, cub, 2);
-	else if (str && str[0] != 'N' && str[0] != 'S' && str[0] != 'W' && str[0] != 'E'
-			&& str[0] != 'R' && str[0] != 'F' && str[0] != 'C'
-			&& str[0] > 65 && str[0] < 122)
-		cub->error = 2;
+int ft_path_texture(char *str, char **texture, t_cub *cub, int j)
+{
+    cub->i = 0;
+    if (*texture != NULL)
+    {
+        cub->error = 2;
+        return (0);
+    }
+    while (str[j] == ' ')
+        j++;
+
+    char	*fname_start;
+    char *ver;
+    
+    fname_start = &str[j];
+    ver = strrchr(fname_start, '.');
+
+    if (ver == NULL || ver == fname_start)
+    {
+        return (ft_texture_error(cub, "Error: Formato de arquivo de textura inválido. Extensão ausente ou inválida.\n"));
+    }
+
+    if (strcmp(ver + 1, "xpm") != 0)
+    {
+        return (ft_texture_error(cub, "Error: Formato de arquivo de textura inválido. Use um arquivo .xpm\n"));
+    }
+
+    if (!(*texture = (char *)(malloc(sizeof(char) * (ft_strlen2(fname_start) + 1)))))
+    {
+        cub->error = 2;
+        return (0);
+    }
+    strcpy(*texture, fname_start);
+    return (0);
+}
+
+void ft_texture(char *str, t_cub *cub)
+{
+    int i = 0;
+    if (str && str[i] == 'S' && str[i + 1] == 'O')
+        ft_path_texture(str, &cub->textures.SO, cub, 2);
+    else if (str && str[i] == 'N' && str[i + 1] == 'O')
+        ft_path_texture(str, &cub->textures.NO, cub, 2);
+    else if (str && str[i] == 'E' && str[i + 1] == 'A')
+        ft_path_texture(str, &cub->textures.EA, cub, 2);
+    else if (str && str[i] == 'W' && str[i + 1] == 'E')
+        ft_path_texture(str, &cub->textures.WE, cub, 2);
+    else if (str && str[0] != 'N' && str[0] != 'S' && str[0] != 'W' && str[0] != 'E'
+             && str[0] != 'R' && str[0] != 'F' && str[0] != 'C'
+             && str[0] > 65 && str[0] < 122)
+        cub->error = 2;
 }

@@ -34,4 +34,17 @@ int		ft_space(t_cub *cub, int x, int y)
 	return (x >= 0 && x < cub->map.height && y >= 0 && y < cub->map.width && cub->map.grid[x][y] == ' ');
 }
 
+int ft_verify_textures(t_cub *cub)
+{
+    if (!cub->textures.NO)
+        return (ret(cub, "Error: Caminho da textura NO não definido.\n"));
+    if (!cub->textures.SO)
+        return (ret(cub, "Error: Caminho da textura SO não definido.\n"));
+    if (!cub->textures.WE)
+        return (ret(cub, "Error: Caminho da textura WE não definido.\n"));
+    if (!cub->textures.EA)
+        return (ret(cub, "Error: Caminho da textura EA não definido.\n"));
+    return (0);
+}
+
 

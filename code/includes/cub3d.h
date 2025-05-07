@@ -15,6 +15,7 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+#include <string.h>
 # include <stdio.h>
 # include <fcntl.h>
 # include "../minilibx-linux/mlx.h"
@@ -104,5 +105,8 @@ int		ft_space(t_cub *cub, int x , int y);
 
 void	interior_map_errors(t_cub *cub, int error_code);
 void	border_map_errors(t_cub *cub, int error_code);
+
+int ft_check_extension(const char *fname, const char *extensin); // lider essa funcao verifica a extensao, para validar a extencao 
+int ret(t_cub *cub, char *str);
 
 #endif
