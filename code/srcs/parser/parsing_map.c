@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 00:43:58 by aliberal          #+#    #+#             */
-/*   Updated: 2025/05/06 04:09:13 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/05/08 01:33:47 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void	ft_map(char *str, t_cub *cub)
 		if (check_color(cub->f_color) || check_color(cub->c_color) || cub->textures.NO == NULL ||
 				cub->textures.SO == NULL || cub->textures.WE == NULL ||
 				cub->textures.EA == NULL){
-			cub->error = 2;
+			cub->error = 11;
 		}
 		if (ft_strlen(str) > sizeline){
 			sizeline = ft_strlen(str);

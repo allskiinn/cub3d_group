@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 01:00:16 by aliberal          #+#    #+#             */
-/*   Updated: 2025/05/04 18:27:40 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/05/08 01:14:40 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,18 @@ int		ft_path_texture(char *str, char **texture, t_cub *cub, int j)
 {
 	cub->i = 0;
 	if (*texture != NULL)
-	{
 		cub->error = 2;
-		return (0);
-	}
 	if (ft_charinstr(str, '.') == 0 || ft_charinstr(str, '/') == 0
 			|| ft_strlen2(str) <= 2)
-		cub->error = 2;
+		cub->error = 3;
 	while (str[j] != '.')
 	{
 		if (str[j] != ' ' && str[j] != '.')
-			cub->error = 2;
+			cub->error = 3;
 		j++;
 	}
 	if (!(*texture = (char *)(malloc(sizeof(char) * (ft_strlen2(str) + 1)))))
-		cub->error = 2;
+		cub->error = 4;
 	while (str[j] != '\0')
 	{
 		(*texture)[cub->i] = str[j];
@@ -57,5 +54,5 @@ void	ft_texture(char *str, t_cub *cub)
 	else if (str && str[0] != 'N' && str[0] != 'S' && str[0] != 'W' && str[0] != 'E'
 			&& str[0] != 'R' && str[0] != 'F' && str[0] != 'C'
 			&& str[0] > 65 && str[0] < 122)
-		cub->error = 2;
+		cub->error = 5;
 }

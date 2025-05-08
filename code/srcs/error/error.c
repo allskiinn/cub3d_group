@@ -6,13 +6,13 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 00:35:04 by aliberal          #+#    #+#             */
-/*   Updated: 2025/05/07 15:44:02 by asobrinh         ###   ########.fr       */
+/*   Updated: 2025/05/08 01:19:10 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../includes/cub3d.h"
 
-static	int ret(t_cub *cub,char *str)
+int ret(t_cub *cub,char *str)
 {
 	ft_error(cub, str);
 	return (1);
@@ -42,6 +42,8 @@ int ft_verify_errors(t_cub *cub)
 		return (ret(cub, "Error\nInvalid characters around player.\n"));
 	if (ft_check_player_around(cub) == 1)
 		return (ret(cub, "Error\nSpace found adjacent player start.\n"));
+	if (ft_verify_textures(cub))
+		return (1);
 	return (0);
 }
 

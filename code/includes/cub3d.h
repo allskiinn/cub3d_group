@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 21:19:04 by aliberal          #+#    #+#             */
-/*   Updated: 2025/05/07 16:32:26 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/05/08 02:20:38 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,6 @@ int			ft_strlen(char *str);
 int check_color(int color[3]);
 int		ft_checkPlayer(t_cub *cub);
 
-//tratei da parte que faltava da validacao do mapa em relacao a borda e detro do mapa
-
 
 int		ft_check_player_around(t_cub *cub);
 
@@ -104,5 +102,15 @@ int		ft_space(t_cub *cub, int x , int y);
 
 void	interior_map_errors(t_cub *cub, int error_code);
 void	border_map_errors(t_cub *cub, int error_code);
+
+
+void items_map_errors(t_cub *cub, int code);
+
+int ft_verify_textures(t_cub *cub);
+int	ft_tolower(int c);
+int ft_verify_extention(char *t);
+int ft_verify_ext_dir(char *dir);
+
+int ret(t_cub *cub,char *str);  
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 01:34:43 by aliberal          #+#    #+#             */
-/*   Updated: 2025/05/04 02:22:02 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/05/08 01:24:44 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ int		ft_atoi2(const char *str, t_cub *cub)
 
 	sum = 0;
 	if (str[1] != ' ' || ft_charinstr((char *)str, ',') == 1)
-		cub->error = 2;
+		cub->error = 7;
 	while (str[cub->i] == ' ' || str[cub->i] == '\t'
 			|| str[cub->i] == ',' || str[cub->i] == '\n'
 			|| str[cub->i] == '\r' || str[cub->i] == '\v'
 			|| str[cub->i] == '\f')
 		cub->i++;
 	if (str[cub->i] == '-' || str[cub->i] == '+')
-		cub->error = 2;
+		cub->error = 7;
 	while (str[cub->i] >= '0' && str[cub->i] <= '9')
 	{
 		if (sum > 21474636)
@@ -45,7 +45,7 @@ void	ft_atoi3_check(const char *str, t_cub *cub)
 
 	i = 0;
 	j = 0;
-	while (str[i] != ',')
+	while (str[i] && str[i] != ',')
 		i++;
 	if (str[i] == ',')
 		j = 1;
@@ -61,9 +61,9 @@ void	ft_atoi3_check(const char *str, t_cub *cub)
 		i++;
 	}
 	if (j != 2)
-		cub->error = 2;
+		cub->error = 8;
 	if (ft_nb_comma(str) != 2)
-		cub->error = 2;
+		cub->error = 8;
 }
 
 void	ft_atoi3(const char *str, t_cub *cub, char type)
@@ -73,7 +73,7 @@ void	ft_atoi3(const char *str, t_cub *cub, char type)
 
 	verify = 0;
 	if (str[1] != ' ')
-		cub->error = 2;
+		cub->error = 9;
 	ft_atoi3_check(str, cub);
 	c = 0;
 	while (str[cub->i] == ' ' || str[cub->i] == '\t' || str[cub->i]
@@ -91,7 +91,7 @@ void	ft_atoi3(const char *str, t_cub *cub, char type)
 			cub->i++;
 		}
 		if (verify > 255 || verify < 0)
-			cub->error = 2;
+			cub->error = 10;
 		else
 		{
 			if (type == 'F')

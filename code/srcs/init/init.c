@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 00:59:07 by aliberal          #+#    #+#             */
-/*   Updated: 2025/05/07 16:40:53 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/05/08 01:56:29 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		ft_cub(char *str, t_cub *cub)
 	if (str[i + 1] == 'c' && str[i + 2] == 'u' && str[i + 3] == 'b')
 	{
 		if (ft_parsing(str, cub))
-			return 1;
+			exit(EXIT_FAILURE);
 		if (!ft_verify_errors(cub))
 			{
 				printf("\n\n\n################ DADOS DO MAPA ################");
@@ -61,7 +61,7 @@ int		ft_cub(char *str, t_cub *cub)
 					printf("\n");
 					i++;
 				}
-				printf("Finish\n");
+				printf("Mapa lido com sucesso...\n");
 			}
 	}	
 	else
