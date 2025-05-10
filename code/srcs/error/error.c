@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 00:35:04 by aliberal          #+#    #+#             */
-/*   Updated: 2025/05/10 01:52:19 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/05/11 00:09:34 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,21 @@ void	ft_error(t_cub *cub, char *str)
 			free(cub->map.grid[i]);
 	}
 	ft_exit(cub);
+}
+
+int		ft_exit(t_cub *cub)
+{
+	if (cub->img.img_ptr)
+		mlx_destroy_image(cub->mlx_ptr, cub->img.img_ptr);
+	if (cub->textures[0].img_ptr)
+		mlx_destroy_image(cub->mlx_ptr, cub->textures[0].img_ptr);
+	if (cub->textures[1].img_ptr)
+		mlx_destroy_image(cub->mlx_ptr, cub->textures[1].img_ptr);
+	if (cub->textures[2].img_ptr)
+		mlx_destroy_image(cub->mlx_ptr, cub->textures[2].img_ptr);
+	if (cub->textures[3].img_ptr)
+		mlx_destroy_image(cub->mlx_ptr, cub->textures[3].img_ptr);
+	if (cub->mlx_win)
+		mlx_destroy_window(cub->mlx_ptr, cub->mlx_win);
+	exit(0);
 }

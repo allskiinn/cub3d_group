@@ -6,13 +6,19 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 21:19:04 by aliberal          #+#    #+#             */
-/*   Updated: 2025/05/10 01:52:03 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/05/11 00:08:54 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+    header
+*/
 #ifndef CUB3D_H
 # define CUB3D_H
 
+/*
+    library
+*/
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
@@ -21,33 +27,60 @@
 # include <math.h>
 # include "../minilibx-linux/mlx.h"
 
+/*
+    macros
+*/
 # define ROTATE_LEFT	65361
 # define ROTATE_RIGHT	65363
 # define FORWARD_W_Z	119
 # define BACK_S_S		115
 # define RIGHT_D_D		100
+# define DARK_MODE      113
+# define NORMAL_MODE    101
 # define LEFT_A_Q		97
 # define BUFFER_SIZE	4096
+#ifndef M_PI
+# define M_PI 3.14159265358979323846
+#endif
 
+/*
+    struct player
+
+    -- instructions --
+    dir - player direction
+    multiplayer - check multiplayer (0 - 1)
+    x and y - player position
+*/
 typedef struct s_player
 {
     int x;
     int y;
-    char dir;
     int multiplayer;
+    
+    char dir;
 } t_player;
 
+/*
+    struct map
+
+    -- instructions --
+    insidemap - check the inside of the map
+    int wrongcharmap - invalid char checker in the map 
+*/
 typedef struct s_map {
-    char **grid;
     int width;
     int height;
     int insidemap;
     int count;
     int wrongcharmap;
     int emptyline;
+
+    char **grid;
 } t_map;
 
-
+/*
+    struct ray
+*/
 typedef struct s_ray
 {
     double raydirx;
@@ -134,6 +167,8 @@ typedef struct s_cub {
 
     int	screenx;
 	int	screeny;
+
+    int mode;
     
     int error;
     int i;
@@ -141,7 +176,7 @@ typedef struct s_cub {
 } t_cub;
 
 
-void	ft_initialisation(t_cub *cub);
+void	ft_init(t_cub *cub);
 int		ft_cub(char *str, t_cub *cub);
 
 int	    ft_parsing(char *file, t_cub *cub);
@@ -162,9 +197,6 @@ int		ft_nb_comma(const char *str);
 int		ft_strlen2(char *str);
 int		ft_walls(t_cub *cub);
 
-void	ft_error(t_cub *cub, char *str);
-int     ft_verify_errors(t_cub *cub);
-
 int		get_next_line(int fd, char **line, t_cub *cub);
 char		*ft_subbuff(char *buff, int start, int len);
 char		*ft_strjoin(char *s1, char *s2);
@@ -180,12 +212,6 @@ int		ft_check_player_around(t_cub *cub);
 
 int		ft_space(t_cub *cub, int x , int y);
 
-void	interior_map_errors(t_cub *cub, int error_code);
-void	border_map_errors(t_cub *cub, int error_code);
-
-
-void items_map_errors(t_cub *cub, int code);
-
 int ft_verify_textures(t_cub *cub);
 int	ft_tolower(int c);
 int ft_verify_extention(char *t);
@@ -193,24 +219,58 @@ int ft_verify_ext_dir(char *dir);
 
 int ret(t_cub *cub,char *str);
 
+/*
+    minilibx funtions
+*/
 int		ft_mlx(t_cub *cub);
+
+/*
+    raycasting init
+*/
+void	ft_init2(t_cub *cub);
+void	ft_init3(t_cub *cub);
+
+/*
+    raycasting main
+*/
 int		ft_raycasting(t_cub *cub);
-void	ft_rotate_left(t_cub *cub, double olddirx);
-void	ft_rotate_right_left(t_cub *cub);
-void	ft_left_right(t_cub *cub);
+
+/*
+    raycasting moves
+*/
 void	ft_forward_back(t_cub *cub);
-int		ft_color_column(t_cub *cub);
-void	ft_stepsidedist(t_cub *cub);
-void	ft_incrementray(t_cub *cub);
-void	ft_drawstartend(t_cub *cub);
-void	ft_initialisation3(t_cub *cub);
-void	ft_init_more3(t_cub *cub);
-int		ft_key_release(int keycode, t_cub *cub);
-int		ft_key_press(int keycode, t_cub *cub);
+void	ft_left_right(t_cub *cub);
+void	ft_rotate_right_left(t_cub *cub);
+
+/*
+    raycasting textures
+*/
 void	ft_get_texture(t_cub *cub);
-void	ft_get_texture_adress(t_cub *cub);
+int		ft_color_column(t_cub *cub);
+
+/*
+    raycasting steps
+*/
+void	ft_stepsidedist(t_cub *cub);
+
+/*
+    key press
+*/
+int		ft_key_press(int keycode, t_cub *cub);
+int		ft_key_release(int keycode, t_cub *cub);
+
+/*
+    error
+*/
+int     ft_verify_errors(t_cub *cub);
+void	ft_error(t_cub *cub, char *str);
+void	interior_map_errors(t_cub *cub, int error_code);
+void	border_map_errors(t_cub *cub, int error_code);
+void    items_map_errors(t_cub *cub, int code);
+
+/*
+    exit
+*/
 int		ft_exit(t_cub *cub);
-void	ft_initialisation2(t_cub *cub);
-void	ft_init_dir(t_cub *cub);
 
 #endif

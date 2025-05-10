@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 13:48:16 by asobrinh          #+#    #+#             */
-/*   Updated: 2025/05/10 00:34:21 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/05/10 16:11:37 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int		main(int ac, char **av)
 {
 	t_cub cub;
 
-	ft_initialisation(&cub);
+	ft_init(&cub);
 	if (ac == 2)
 		ft_cub(av[1], &cub);
 	else

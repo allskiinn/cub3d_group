@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 00:59:07 by aliberal          #+#    #+#             */
-/*   Updated: 2025/05/10 01:39:09 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/05/11 00:13:58 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,12 @@ int		ft_cub(char *str, t_cub *cub)
 	return (0);
 }
 
-void	ft_initialisation(t_cub *cub)
+void	ft_init(t_cub *cub)
 {
 	cub->rx = 0;
 	cub->ry = 0;
+
+	cub->mode = 0;
 	
 	cub->NO = NULL;
 	cub->SO = NULL;
