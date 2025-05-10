@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 15:59:27 by aliberal          #+#    #+#             */
-/*   Updated: 2025/05/11 00:23:44 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/05/11 00:29:26 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,11 @@ int	ft_apply_flashlight(t_cub *cub, int y, int color)
 
 	if (intensity > 1.0)
 		intensity = 1.0;
+	
 
-	int	r = ((color >> 16) & 0xFF) * intensity * 0.6;
-	int	g = ((color >> 8) & 0xFF) * intensity * 0.6;
-	int	b = (color & 0xFF) * intensity * 0.6;
+	int	r = ((color >> 16) & 0xFF) * intensity ;
+	int	g = ((color >> 8) & 0xFF) * intensity ;
+	int	b = (color & 0xFF) * intensity;
 
 	return ((r << 16) | (g << 8) | b);
 }
