@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 12:57:29 by asobrinh          #+#    #+#             */
-/*   Updated: 2025/05/08 02:32:38 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/05/10 01:51:58 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,25 +74,25 @@ int ft_verify_ext_dir(char *dir)
 
 int ft_verify_textures(t_cub *cub)
 {
-    if (ft_verify_extention(cub->textures.NO))
+    if (ft_verify_extention(cub->NO))
 		return (ret(cub, "Error: Extensao da textura NO e invalida.\n"));
 	else
-		if (ft_verify_ext_dir(cub->textures.NO))
+		if (ft_verify_ext_dir(cub->NO))
 			return (ret(cub, "Error: Textura NO nao existe no caminho referido.\n"));
-	if (ft_verify_extention(cub->textures.SO))
+	if (ft_verify_extention(cub->SO))
 		return (ret(cub, "Error: Extensao da textura SO e invalida.\n"));
 	else
-		if (ft_verify_ext_dir(cub->textures.SO))
+		if (ft_verify_ext_dir(cub->SO))
 			return (ret(cub, "Error: Textura SO nao existe no caminho referido.\n"));
-	if (ft_verify_extention(cub->textures.WE))
+	if (ft_verify_extention(cub->WE))
 		return (ret(cub, "Error: Extensao da textura WE e invalida.\n"));
 	else
-		if (ft_verify_ext_dir(cub->textures.WE))
+		if (ft_verify_ext_dir(cub->WE))
 			return (ret(cub, "Error: Textura WE nao existe no caminho referido.\n"));
-	if (ft_verify_extention(cub->textures.EA))
+	if (ft_verify_extention(cub->EA))
 		return (ret(cub, "Error: Extensao da textura EA e invalida.\n"));
 	else
-		if (ft_verify_ext_dir(cub->textures.EA))
+		if (ft_verify_ext_dir(cub->EA))
 			return (ret(cub, "Error: Textura EA nao existe no caminho referido.\n"));
 	return (0);
 }

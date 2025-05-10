@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 00:35:04 by aliberal          #+#    #+#             */
-/*   Updated: 2025/05/08 01:19:10 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/05/10 01:52:19 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,18 @@ void	ft_error(t_cub *cub, char *str)
 
 	i = -1;
 	write(1, str, ft_strlen(str));
-	if (cub->textures.NO)
-		free(cub->textures.NO);
-	if (cub->textures.SO)
-		free(cub->textures.SO);
-	if (cub->textures.WE)
-		free(cub->textures.WE);
-	if (cub->textures.EA)
-		free(cub->textures.EA);
+	if (cub->NO)
+		free(cub->NO);
+	if (cub->SO)
+		free(cub->SO);
+	if (cub->WE)
+		free(cub->WE);
+	if (cub->EA)
+		free(cub->EA);
 	if (cub->map.grid)
 	{
 		while (++i < cub->map.height)
 			free(cub->map.grid[i]);
 	}
+	ft_exit(cub);
 }

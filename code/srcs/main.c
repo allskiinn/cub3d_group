@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 13:48:16 by asobrinh          #+#    #+#             */
-/*   Updated: 2025/05/07 16:41:10 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/05/10 00:34:21 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,3 @@ int		main(int ac, char **av)
 	else
 		write(1, "Error\nArguments invalides\n", 27);
 }
-

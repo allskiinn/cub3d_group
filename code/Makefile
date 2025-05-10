@@ -6,7 +6,7 @@
 #    By: aliberal <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/29 13:47:16 by asobrinh          #+#    #+#              #
-#    Updated: 2025/05/07 23:50:24 by aliberal         ###   ########.fr        #
+#    Updated: 2025/05/10 00:32:23 by aliberal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,7 @@ SRCS =  ./srcs/error/error.c \
 		./srcs/utils/aux3.c \
 		./srcs/utils/get_next_line.c \
 		./srcs/utils/get_next_line_utils.c \
+		./srcs/raycasting/raycasting.c \
         ./srcs/main.c
 
 OBJSDIR = objectos
