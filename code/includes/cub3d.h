@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 21:19:04 by aliberal          #+#    #+#             */
-/*   Updated: 2025/05/11 00:08:54 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/05/12 12:24:27 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,6 @@
 # define NORMAL_MODE    101
 # define LEFT_A_Q		97
 # define BUFFER_SIZE	4096
-#ifndef M_PI
-# define M_PI 3.14159265358979323846
-#endif
 
 /*
     struct player
@@ -175,52 +172,34 @@ typedef struct s_cub {
     int j;
 } t_cub;
 
-
-void	ft_init(t_cub *cub);
+/*
+    parsing functions
+*/
 int		ft_cub(char *str, t_cub *cub);
-
 int	    ft_parsing(char *file, t_cub *cub);
-int		ft_parsing_map(char *file, t_cub *cub);
-void	ft_texture(char *str, t_cub *cub);
-int		ft_path_texture(char *str, char **texture, t_cub *cub, int j);
-void	ft_map(char *str, t_cub *cub);
 int		ft_is_map(char *str, t_cub *cub);
 int		ft_copy_map(char *str, t_cub *cub);
-int		ft_start(char c, t_cub *cub, int i, int j);
+void	ft_init(t_cub *cub);
+void	ft_texture(char *str, t_cub *cub);
+void	ft_map(char *str, t_cub *cub);
 void	ft_color_resolution(char **str, t_cub *cub);
 
-int		ft_atoi2(const char *str, t_cub *cub);
-void	ft_atoi3(const char *str, t_cub *cub, char type);
+/*
+    check map functions
+*/
 int		ft_charinstr(char *str, char c);
 int		ft_emptyline(char *str);
 int		ft_nb_comma(const char *str);
-int		ft_strlen2(char *str);
 int		ft_walls(t_cub *cub);
-
-int		get_next_line(int fd, char **line, t_cub *cub);
-char		*ft_subbuff(char *buff, int start, int len);
-char		*ft_strjoin(char *s1, char *s2);
-char		*ft_substr(char const *s, unsigned int start, size_t len);
-int			ft_strlen(char *str);
-
-int check_color(int color[3]);
 int		ft_checkPlayer(t_cub *cub);
-
-
 int		ft_check_player_around(t_cub *cub);
-
-
 int		ft_space(t_cub *cub, int x , int y);
-
-int ft_verify_textures(t_cub *cub);
-int	ft_tolower(int c);
-int ft_verify_extention(char *t);
-int ft_verify_ext_dir(char *dir);
-
-int ret(t_cub *cub,char *str);
+int     ft_verify_textures(t_cub *cub);
+int     ft_verify_extention(char *t);
+int     ft_verify_ext_dir(char *dir);
 
 /*
-    minilibx funtions
+    minilibx functions
 */
 int		ft_mlx(t_cub *cub);
 
@@ -260,9 +239,23 @@ int		ft_key_press(int keycode, t_cub *cub);
 int		ft_key_release(int keycode, t_cub *cub);
 
 /*
+    utils functions
+*/
+int		get_next_line(int fd, char **line, t_cub *cub);\
+int		ft_strlen(char *str);
+int		ft_atoi2(const char *str, t_cub *cub);
+int		ft_strlen2(char *str);
+int     ft_tolower(int c);
+char	*ft_subbuff(char *buff, int start, int len);
+char	*ft_strjoin(char *s1, char *s2);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+void	ft_atoi3(const char *str, t_cub *cub, char type);
+
+/*
     error
 */
 int     ft_verify_errors(t_cub *cub);
+int     ret(t_cub *cub,char *str);
 void	ft_error(t_cub *cub, char *str);
 void	interior_map_errors(t_cub *cub, int error_code);
 void	border_map_errors(t_cub *cub, int error_code);

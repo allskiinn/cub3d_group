@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: aliberal <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/03/29 13:47:16 by asobrinh          #+#    #+#              #
-#    Updated: 2025/05/10 16:29:16 by aliberal         ###   ########.fr        #
+#    Created: 2025/02/20 13:47:16 by aliberal          #+#    #+#              #
+#    Updated: 2025/05/12 12:29:35 by aliberal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,14 +92,6 @@ fclean: clean
 re: fclean all
 	@$(CLEAR)
 	@echo "$(GREEN)$(BOLD)Recompilado com sucesso!$(RESET)"
-
-push:
-	@$(CLEAR)
-	@echo "$(GREEN)$(BOLD)Projecto enviado com sucesso!$(RESET)"
-	git add .
-	git commit -m "fdfFinished"
-	git push
-	git status
 
 norm:
 	@$(CLEAR)

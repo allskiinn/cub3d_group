@@ -6,13 +6,13 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 00:23:21 by aliberal          #+#    #+#             */
-/*   Updated: 2025/05/08 02:25:03 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/05/12 12:12:25 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../includes/cub3d.h"
 
-int		ft_parsing_map(char *file, t_cub *cub)
+static	int		ft_parsing_map(char *file, t_cub *cub)
 {
 	int			fd;
 	int			status;

@@ -6,13 +6,13 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 01:00:16 by aliberal          #+#    #+#             */
-/*   Updated: 2025/05/10 01:03:21 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/05/12 12:15:32 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../includes/cub3d.h"
 
-int		ft_path_texture(char *str, char **texture, t_cub *cub, int j)
+static	int		ft_path_texture(char *str, char **texture, t_cub *cub, int j)
 {
 	cub->i = 0;
 	if (*texture != NULL)

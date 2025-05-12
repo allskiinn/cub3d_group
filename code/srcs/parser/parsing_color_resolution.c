@@ -6,13 +6,13 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 01:01:33 by aliberal          #+#    #+#             */
-/*   Updated: 2025/05/10 01:02:35 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/05/12 12:14:14 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../includes/cub3d.h"
 
-int rgb_to_int(int r, int g, int b)
+static	int rgb_to_int(int r, int g, int b)
 {
     return (r << 16) | (g << 8) | b;
 }

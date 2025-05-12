@@ -6,13 +6,13 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 00:43:58 by aliberal          #+#    #+#             */
-/*   Updated: 2025/05/10 01:03:05 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/05/12 12:17:25 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../includes/cub3d.h"
 
-int		ft_start(char c, t_cub *cub, int i, int j)
+static	int		ft_start(char c, t_cub *cub, int i, int j)
 {
 	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
 	{
@@ -82,7 +82,7 @@ int		ft_is_map(char *str, t_cub *cub)
 	return (0);
 }
 
-int check_color(int color[3])
+static	int check_color(int color[3])
 {
 	int	i;
 
