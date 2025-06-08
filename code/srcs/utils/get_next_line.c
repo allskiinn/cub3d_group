@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 14:49:24 by ebourdit          #+#    #+#             */
-/*   Updated: 2025/05/04 03:55:09 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/05/08 02:22:09 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int		ft_eof(int ret, char **buff, char **line)
 
 int		ft_free_buff(char **buff, t_cub *cub)
 {
-	if (cub->error == 2 && *buff)
+	if (cub->error && *buff)
 	{
 		free(*buff);
 		return (1);

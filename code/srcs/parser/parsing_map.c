@@ -6,13 +6,13 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 00:43:58 by aliberal          #+#    #+#             */
-/*   Updated: 2025/05/06 04:09:13 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/05/12 12:17:25 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../includes/cub3d.h"
 
-int		ft_start(char c, t_cub *cub, int i, int j)
+static	int		ft_start(char c, t_cub *cub, int i, int j)
 {
 	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
 	{
@@ -82,7 +82,7 @@ int		ft_is_map(char *str, t_cub *cub)
 	return (0);
 }
 
-int check_color(int color[3])
+static	int check_color(int color[3])
 {
 	int	i;
 
@@ -100,10 +100,10 @@ void	ft_map(char *str, t_cub *cub)
 
 	if (ft_is_map(str, cub) == 1)
 	{
-		if (check_color(cub->f_color) || check_color(cub->c_color) || cub->textures.NO == NULL ||
-				cub->textures.SO == NULL || cub->textures.WE == NULL ||
-				cub->textures.EA == NULL){
-			cub->error = 2;
+		if (check_color(cub->f_color) || check_color(cub->c_color) || cub->NO == NULL ||
+				cub->SO == NULL || cub->WE == NULL ||
+				cub->EA == NULL){
+			cub->error = 11;
 		}
 		if (ft_strlen(str) > sizeline){
 			sizeline = ft_strlen(str);

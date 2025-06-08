@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 00:59:07 by aliberal          #+#    #+#             */
-/*   Updated: 2025/05/07 16:40:53 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/05/11 00:13:58 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int		ft_cub(char *str, t_cub *cub)
 {
 	int			i;
-	int			y;
+	int y;
 
 	i = 0;
 	while (str[i] != '\0')
@@ -32,16 +32,16 @@ int		ft_cub(char *str, t_cub *cub)
 	if (str[i + 1] == 'c' && str[i + 2] == 'u' && str[i + 3] == 'b')
 	{
 		if (ft_parsing(str, cub))
-			return 1;
+			exit(EXIT_FAILURE);
 		if (!ft_verify_errors(cub))
 			{
 				printf("\n\n\n################ DADOS DO MAPA ################");
 				printf("\n RESOLUCAO EM X: %d", cub->rx);
 				printf("\n RESOLUCAO EM Y: %d", cub->ry);
-				printf("\n\n TEXTURA DO NORTE: %s", cub->textures.NO);
-				printf("\n TEXTURA DO SUL: %s", cub->textures.SO);
-				printf("\n TEXTURA DO LESTE: %s", cub->textures.EA);
-				printf("\n TEXTURA DO OESTE: %s", cub->textures.WE);
+				printf("\n\n TEXTURA DO NORTE: %s", cub->NO);
+				printf("\n TEXTURA DO SUL: %s", cub->SO);
+				printf("\n TEXTURA DO LESTE: %s", cub->EA);
+				printf("\n TEXTURA DO OESTE: %s", cub->WE);
 				printf("\n\n COR DO TETO: %d, %d, %d", cub->f_color[0], cub->f_color[1], cub->f_color[2]);
 				printf("\n COR DO CHAO: %d, %d, %d", cub->c_color[0], cub->c_color[1], cub->c_color[2]);
 				printf("\n\n NUMERO DE LINHAS: %d", cub->map.height);
@@ -61,7 +61,8 @@ int		ft_cub(char *str, t_cub *cub)
 					printf("\n");
 					i++;
 				}
-				printf("Finish\n");
+				printf("Mapa lido com sucesso...\n");
+				ft_mlx(cub);
 			}
 	}	
 	else
@@ -69,15 +70,17 @@ int		ft_cub(char *str, t_cub *cub)
 	return (0);
 }
 
-void	ft_initialisation(t_cub *cub)
+void	ft_init(t_cub *cub)
 {
 	cub->rx = 0;
 	cub->ry = 0;
+
+	cub->mode = 0;
 	
-	cub->textures.NO = NULL;
-	cub->textures.SO = NULL;
-	cub->textures.WE = NULL;
-	cub->textures.EA = NULL;
+	cub->NO = NULL;
+	cub->SO = NULL;
+	cub->WE = NULL;
+	cub->EA = NULL;
     
     cub->f_color[0] = -1;
 	cub->f_color[1] = -1;
@@ -85,6 +88,10 @@ void	ft_initialisation(t_cub *cub)
     cub->c_color[0] = -1;
 	cub->c_color[1] = -1;
 	cub->c_color[2] = -1;
+	cub->c = -1;
+	cub->f = -1;
+	
+
     cub->sum = 0;
     cub->checkColor = 0;
     
@@ -102,4 +109,12 @@ void	ft_initialisation(t_cub *cub)
     cub->player.dir = 'x';
     cub->player.multiplayer = 0;
 	
+
+	cub->img.img_ptr = NULL;
+	cub->textures[0].img_ptr = NULL;
+	cub->textures[1].img_ptr = NULL;
+	cub->textures[2].img_ptr = NULL;
+	cub->textures[3].img_ptr = NULL;
+	cub->mlx_win = NULL;
+
 }

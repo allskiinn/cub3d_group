@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: aliberal <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/03/29 13:47:16 by asobrinh          #+#    #+#              #
-#    Updated: 2025/05/04 04:10:13 by aliberal         ###   ########.fr        #
+#    Created: 2025/02/20 13:47:16 by aliberal          #+#    #+#              #
+#    Updated: 2025/05/12 12:29:35 by aliberal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,18 +36,24 @@ BOLD             := \033[1;1m
 # FDF
 NAME = cub3d
 SRCS =  ./srcs/error/error.c \
-	./srcs/error/error_info_map.c \
-        ./srcs/init/init.c \
-        ./srcs/parser/parsing.c \
-		./srcs/parser/parsing_color_resolution.c \
-		./srcs/parser/parsing_map.c \
-		./srcs/parser/parsing_texture.c \
-		./srcs/utils/aux1.c \
-		./srcs/utils/aux2.c \
-		./srcs/utils/auxi3.c \
-		./srcs/utils/get_next_line.c \
-		./srcs/utils/get_next_line_utils.c \
-        ./srcs/main.c
+			./srcs/error/error_info_map.c \
+			./srcs/init/init.c \
+			./srcs/parser/parsing.c \
+			./srcs/parser/parsing_color_resolution.c \
+			./srcs/parser/parsing_map.c \
+			./srcs/parser/parsing_texture.c \
+			./srcs/raycasting/raycasting.c \
+			./srcs/raycasting/raycasting_texture.c \
+			./srcs/raycasting/raycasting_steps.c \
+			./srcs/raycasting/raycasting_move.c \
+			./srcs/key/key_press.c \
+			./srcs/utils/aux1.c \
+			./srcs/utils/aux2.c \
+			./srcs/utils/aux3.c \
+			./srcs/utils/aux4.c \
+			./srcs/utils/get_next_line.c \
+			./srcs/utils/get_next_line_utils.c \
+			./srcs/main.c
 
 OBJSDIR = objectos
 OBJS = $(addprefix $(OBJSDIR)/,$(SRCS:.c=.o))
@@ -86,14 +92,6 @@ fclean: clean
 re: fclean all
 	@$(CLEAR)
 	@echo "$(GREEN)$(BOLD)Recompilado com sucesso!$(RESET)"
-
-push:
-	@$(CLEAR)
-	@echo "$(GREEN)$(BOLD)Projecto enviado com sucesso!$(RESET)"
-	git add .
-	git commit -m "fdfFinished"
-	git push
-	git status
 
 norm:
 	@$(CLEAR)
