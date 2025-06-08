@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 00:35:04 by aliberal          #+#    #+#             */
-/*   Updated: 2025/06/06 15:10:00 by asobrinh         ###   ########.fr       */
+/*   Updated: 2025/06/08 21:15:05 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,9 @@ int	ft_exit(t_cub *cub)
 	if (cub->mlx_win)
 		(mlx_destroy_window(cub->mlx_ptr, cub->mlx_win));
 	if (cub->mlx_ptr)
+	{
 		mlx_destroy_display(cub->mlx_ptr);
-	free(cub->mlx_ptr);
+		free(cub->mlx_ptr);
+	}
 	exit(0);
 }

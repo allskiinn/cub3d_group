@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 15:59:27 by aliberal          #+#    #+#             */
-/*   Updated: 2025/05/11 00:29:26 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/06/08 21:07:50 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static double	ft_calc_flashlight_intensity(t_cub *cub, int y)
 	light.dx = (double)cub->ray.x - light.center_x;
 	light.dy = (double)y - light.center_y;
 	light.distance = sqrt(light.dx * light.dx + light.dy * light.dy);
-	light.radius = 150.0;
+	light.radius = 400.0;
 	if (light.distance > light.radius)
 	{
 		intensity = 0.05;

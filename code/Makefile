@@ -6,7 +6,7 @@
 #    By: aliberal <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/20 13:47:16 by aliberal          #+#    #+#              #
-#    Updated: 2025/05/12 12:29:35 by aliberal         ###   ########.fr        #
+#    Updated: 2025/06/08 21:02:43 by aliberal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ WHITE            := \033[00m
 RED              := \033[1;31m
 BOLD             := \033[1;1m
 
-# FDF
+# CUB3D
 NAME = cub3d
 SRCS =  ./srcs/error/error.c \
 			./srcs/error/error_info_map.c \
@@ -50,13 +50,13 @@ SRCS =  ./srcs/error/error.c \
 			./srcs/raycasting/raycsting_textura_util.c \
 			./srcs/key/key_press.c \
 			./srcs/utils/aux1.c \
-			./srcs/utils/auxiliar1.c \
-			./srcs/utils/auxiliar2.c \
-			./srcs/utils/auxiliar22.c \
-			./srcs/utils/auxiliar3.c\
 			./srcs/utils/aux2.c \
 			./srcs/utils/aux3.c \
 			./srcs/utils/aux4.c \
+			./srcs/utils/aux5.c \
+			./srcs/utils/aux6.c \
+			./srcs/utils/aux7.c \
+			./srcs/utils/aux8.c \
 			./srcs/utils/get_next_line.c \
 			./srcs/utils/get_next_line_utils.c \
 			./srcs/utils/get_next_line_utils1.c \

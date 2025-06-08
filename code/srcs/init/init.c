@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 00:59:07 by aliberal          #+#    #+#             */
-/*   Updated: 2025/06/06 15:30:51 by asobrinh         ###   ########.fr       */
+/*   Updated: 2025/06/08 21:13:36 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ static void	ft_init_mlx_textures(t_cub *cub)
 	cub->textures[2].img_ptr = NULL;
 	cub->textures[3].img_ptr = NULL;
 	cub->mlx_win = NULL;
+	cub->mlx_ptr = NULL;
 }
 
 void	ft_init(t_cub *cub)

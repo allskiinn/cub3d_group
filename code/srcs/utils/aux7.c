@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   auxiliar3.c                                        :+:      :+:    :+:   */
+/*   aux8.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asobrinh <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 12:08:25 by asobrinh          #+#    #+#             */
-/*   Updated: 2025/06/07 12:08:56 by asobrinh         ###   ########.fr       */
+/*   Updated: 2025/06/08 20:57:43 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_verify_textures(t_cub *cub)
 		return (ret(cub, "Error: Extensao no e invalida.\n"));
 	else
 		if (ft_verify_ext_dir(cub->no))
-			return (ret(cub, "Error: Textura no nao existe no caminhore.\n"));
+			return (ret(cub, "Error: Textura no nao existe no caminho.\n"));
 	if (ft_verify_extention(cub->so))
 		return (ret(cub, "Error: Extensao da textura so e invalida.\n"));
 	else
