@@ -12,16 +12,16 @@
 
 #include "./../../includes/cub3d.h"
 
-static	int rgb_to_int(int r, int g, int b)
+static int	rgb_to_int(int r, int g, int b)
 {
-    return (r << 16) | (g << 8) | b;
+	return ((r << 16) | (g << 8) | b);
 }
 
 void	ft_color_resolution(char **str, t_cub *cub)
 {
-    cub->i = 1;
-	if (cub->map.width > 0 && (cub->NO == NULL || cub->SO == NULL ||
-				cub->WE == NULL || cub->EA == NULL))
+	cub->i = 1;
+	if (cub->map.width > 0 && (cub->no == NULL || cub->so == NULL
+			|| cub->we == NULL || cub->ea == NULL))
 		cub->error = 1;
 	if (*str && *str[0] == 'R')
 	{
@@ -34,12 +34,12 @@ void	ft_color_resolution(char **str, t_cub *cub)
 	}
 	else if (*str && *str[0] == 'F')
 	{
-        ft_atoi3(*str, cub, 'F');
+		ft_atoi3(*str, cub, 'F');
 		cub->f = rgb_to_int(cub->f_color[0], cub->f_color[1], cub->f_color[2]);
 	}
 	else if (*str && *str[0] == 'C')
 	{
-        ft_atoi3(*str, cub, 'C');
+		ft_atoi3(*str, cub, 'C');
 		cub->c = rgb_to_int(cub->c_color[0], cub->c_color[1], cub->c_color[2]);
 	}
 }

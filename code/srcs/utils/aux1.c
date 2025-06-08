@@ -6,23 +6,23 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 01:34:43 by aliberal          #+#    #+#             */
-/*   Updated: 2025/05/08 01:24:44 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/06/07 11:33:45 by asobrinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../includes/cub3d.h"
 
-int		ft_atoi2(const char *str, t_cub *cub)
+int	ft_atoi2(const char *str, t_cub *cub)
 {
-	int		sum;
+	int	sum;
 
 	sum = 0;
 	if (str[1] != ' ' || ft_charinstr((char *)str, ',') == 1)
 		cub->error = 7;
 	while (str[cub->i] == ' ' || str[cub->i] == '\t'
-			|| str[cub->i] == ',' || str[cub->i] == '\n'
-			|| str[cub->i] == '\r' || str[cub->i] == '\v'
-			|| str[cub->i] == '\f')
+		|| str[cub->i] == ',' || str[cub->i] == '\n'
+		|| str[cub->i] == '\r' || str[cub->i] == '\v'
+		|| str[cub->i] == '\f')
 		cub->i++;
 	if (str[cub->i] == '-' || str[cub->i] == '+')
 		cub->error = 7;
@@ -40,8 +40,8 @@ int		ft_atoi2(const char *str, t_cub *cub)
 
 void	ft_atoi3_check(const char *str, t_cub *cub)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
@@ -68,44 +68,24 @@ void	ft_atoi3_check(const char *str, t_cub *cub)
 
 void	ft_atoi3(const char *str, t_cub *cub, char type)
 {
-	int		verify;
-	int		c;
+	int	c;
 
-	verify = 0;
 	if (str[1] != ' ')
 		cub->error = 9;
 	ft_atoi3_check(str, cub);
 	c = 0;
-	while (str[cub->i] == ' ' || str[cub->i] == '\t' || str[cub->i]
-			== ',' || str[cub->i] == '\n' || str[cub->i] == '\r'
-			|| str[cub->i] == '\v' || str[cub->i] == '\f')
+	while (str[cub->i] && c < 3 && cub->i != 0)
 	{
-		cub->i++;
-		verify = 0;
-        if (str[cub->i] >= '0' && str[cub->i] <= '9')
-			cub->checkColor++;
-		while (str[cub->i] >= '0' && str[cub->i] <= '9')
-		{
-			verify = (verify * 10) + str[cub->i] - 48;
-			cub->sum = (cub->sum * 10) + (str[cub->i] - 48);
-			cub->i++;
-		}
-		if (verify > 255 || verify < 0)
-			cub->error = 10;
-		else
-		{
-			if (type == 'F')
-				cub->f_color[c++] = cub->sum;
-			else if (type == 'C')
-				cub->c_color[c++] = cub->sum;
-		}
-		cub->sum = 0;
+		ft_atoi3_skip_whitespace(str, cub);
+		if (!str[cub->i])
+			break ;
+		ft_atoi3_process_component(str, cub, type, &c);
 	}
 }
 
-int		ft_charinstr(char *str, char c)
+int	ft_charinstr(char *str, char c)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!str)
@@ -119,16 +99,16 @@ int		ft_charinstr(char *str, char c)
 	return (0);
 }
 
-int		ft_emptyline(char *str)
+int	ft_emptyline(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] != '\t' && str[i] != ' ' && str[i] != '\0' &&
-				str[i] != '\n' && str[i] != '\r' && str[i] != '\v'
-				&& str[i] != '\f')
+		if (str[i] != '\t' && str[i] != ' '
+			&& str[i] != '\0' && str[i] != '\n' && str[i] != '\r'
+			&& str[i] != '\v' && str[i] != '\f')
 			return (1);
 		i++;
 	}

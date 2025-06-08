@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 16:09:11 by aliberal          #+#    #+#             */
-/*   Updated: 2025/05/10 16:18:27 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/06/07 12:16:38 by asobrinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,16 +57,16 @@ static	void	ft_init_more3(t_cub *cub)
 		cub->ray.deltadistx = 1;
 	else
 		cub->ray.deltadistx = sqrt(1 + (cub->ray.raydiry
-			* cub->ray.raydiry) / (cub->ray.raydirx *
-			cub->ray.raydirx));
+					* cub->ray.raydiry) / (cub->ray.raydirx
+					* cub->ray.raydirx));
 	if (cub->ray.raydirx == 0)
 		cub->ray.deltadisty = 0;
 	else if (cub->ray.raydiry == 0)
 		cub->ray.deltadisty = 1;
 	else
-		cub->ray.deltadisty = sqrt(1 + (cub->ray.raydirx *
-			cub->ray.raydirx) / (cub->ray.raydiry *
-			cub->ray.raydiry));
+		cub->ray.deltadisty = sqrt(1 + (cub->ray.raydirx
+					* cub->ray.raydirx) / (cub->ray.raydiry
+					* cub->ray.raydiry));
 }
 
 void	ft_init3(t_cub *cub)

@@ -6,13 +6,13 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 01:34:43 by aliberal          #+#    #+#             */
-/*   Updated: 2025/05/06 04:25:21 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/06/07 11:40:25 by asobrinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../includes/cub3d.h"
 
-int		ft_nb_comma(const char *str)
+int	ft_nb_comma(const char *str)
 {
 	int	i;
 	int	j;
@@ -27,10 +27,10 @@ int		ft_nb_comma(const char *str)
 	return (j);
 }
 
-int		ft_strlen2(char *str)
+int	ft_strlen2(char *str)
 {
-	int j;
-	int i;
+	int	j;
+	int	i;
 
 	j = 0;
 	i = 0;
@@ -44,9 +44,9 @@ int		ft_strlen2(char *str)
 	return (j);
 }
 
-int		ft_walls_util(char *str)
+int	ft_walls_util(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i] != '\0')
@@ -71,10 +71,10 @@ int		ft_walls_util(char *str)
 	return (0);
 }
 
-int		ft_checkPlayer(t_cub *cub)
+int	ft_checkplayer(t_cub *cub)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	x = cub->player.x;
 	y = cub->player.y;
@@ -89,88 +89,24 @@ int		ft_checkPlayer(t_cub *cub)
 	return (0);
 }
 
-int		ft_walls(t_cub *cub)
+int	ft_walls(t_cub *cub)
 {
-	int i;
-	int j;
+	int	ret;
 
-	i = 0;
-	while (i < cub->map.width)
-	{
-		if (cub->map.grid[0][i] == '0')
-			return (1);
-		if (cub->map.grid[0][i] == cub->player.dir)
-			return (2);
-		i++;
-	}
-
-	i = 0;
-	while (i < cub->map.width)
-	{
-		if (cub->map.grid[cub->map.height - 1][i] == '0')
-			return (4);
-		if (cub->map.grid[cub->map.height - 1][i] == cub->player.dir)
-			return (5);
-		i++;
-	}
-
-	i = 1;
-	while (i < cub->map.height - 1)
-	{
-		if (cub->map.grid[i][0] == '0')
-			return (7);
-		if (cub->map.grid[i][0] == cub->player.dir)
-			return (8);
-		if (ft_space(cub, i, 0))
-		{
-			j = 0;
-			while (j < cub->map.width && ft_space(cub, i, j))
-				j++;
-			if (j == cub->map.width || cub->map.grid[i][j] != '1')
-				return (9);
-		}
-		i++;
-	}
-
-	i = 1;
-	while (i < cub->map.height - 1)
-	{
-		if (cub->map.grid[i][cub->map.width - 1] == '0')
-			return (10);
-		if (cub->map.grid[i][cub->map.width - 1] == cub->player.dir)
-			return (11);
-		if (ft_space(cub, i, cub->map.width - 1))
-		{
-			j = cub->map.width - 1;
-			while (j >= 0 && ft_space(cub, i, j))
-				j--;
-			if (j == -1 || cub->map.grid[i][j] != '1')
-				return (12);
-		}
-		i++;
-	}
-
-	i = 0;
-	while (i < cub->map.height)
-	{
-		j = 0;
-		while (j < cub->map.width)
-		{
-			if (cub->map.grid[i][j] == '0' || cub->map.grid[i][j] == cub->player.dir)
-			{
-				if (i > 0 && ft_space(cub, i - 1, j))
-					return (13);
-				if (i < cub->map.height - 1 && ft_space(cub, i + 1, j))
-					return (14);
-				if (j > 0 && ft_space(cub, i, j - 1))
-					return (15);
-				if (j < cub->map.width - 1 && ft_space(cub, i, j + 1))
-					return (16);
-			}
-			j++;
-		}
-		i++;
-	}
-
+	ret = ft_check_top_row(cub);
+	if (ret != 0)
+		return (ret);
+	ret = ft_check_bottom_row(cub);
+	if (ret != 0)
+		return (ret);
+	ret = ft_check_left_col(cub);
+	if (ret != 0)
+		return (ret);
+	ret = ft_check_right_col(cub);
+	if (ret != 0)
+		return (ret);
+	ret = ft_check_map_holes(cub);
+	if (ret != 0)
+		return (ret);
 	return (0);
 }

@@ -6,13 +6,13 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 16:07:37 by aliberal          #+#    #+#             */
-/*   Updated: 2025/05/11 00:06:35 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/06/06 15:46:09 by asobrinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int		ft_key_press(int keycode, t_cub *cub)
+int	ft_key_press(int keycode, t_cub *cub)
 {
 	if (keycode == FORWARD_W_Z)
 		cub->forward = 1;
@@ -35,7 +35,7 @@ int		ft_key_press(int keycode, t_cub *cub)
 	return (1);
 }
 
-int		ft_key_release(int keycode, t_cub *cub)
+int	ft_key_release(int keycode, t_cub *cub)
 {
 	if (keycode == FORWARD_W_Z)
 		cub->forward = 0;

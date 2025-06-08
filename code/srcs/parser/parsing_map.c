@@ -12,7 +12,7 @@
 
 #include "./../../includes/cub3d.h"
 
-static	int		ft_start(char c, t_cub *cub, int i, int j)
+static int	ft_start(char c, t_cub *cub, int i, int j)
 {
 	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
 	{
@@ -26,14 +26,14 @@ static	int		ft_start(char c, t_cub *cub, int i, int j)
 	return (0);
 }
 
-int		ft_copy_map(char *str, t_cub *cub)
+int	ft_copy_map(char *str, t_cub *cub)
 {
 	static int	i = 0;
 	int			j;
 
 	j = 0;
-	cub->map.grid[i] = NULL;
-	if (!(cub->map.grid[i] = malloc(sizeof(char) * cub->map.width + 1)))
+	cub->map.grid[i] = malloc(sizeof(char) * cub->map.width + 1);
+	if (!(cub->map.grid[i]))
 		return (0);
 	while (str[j] != '\0')
 	{
@@ -55,9 +55,9 @@ int		ft_copy_map(char *str, t_cub *cub)
 	return (0);
 }
 
-int		ft_is_map(char *str, t_cub *cub)
+int	ft_is_map(char *str, t_cub *cub)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!str)
@@ -66,10 +66,10 @@ int		ft_is_map(char *str, t_cub *cub)
 	{
 		while (str[i] != '\0')
 		{
-			if (str[i] != ' ' && str[i] != '0' && str[i] != '1' \
-					&& str[i] != 'N' && str[i] != 'S' \
-					&& str[i] != 'E' && str[i] != 'W' && str[i] != '\n'
-					&& str[i] != '\t')
+			if (str[i] != ' ' && str[i] != '0' && str[i] != '1'
+				&& str[i] != 'N' && str[i] != 'S'
+				&& str[i] != 'E' && str[i] != 'W' && str[i] != '\n'
+				&& str[i] != '\t')
 			{
 				if (cub->map.insidemap == 1)
 					cub->map.wrongcharmap = 2;
@@ -82,7 +82,7 @@ int		ft_is_map(char *str, t_cub *cub)
 	return (0);
 }
 
-static	int check_color(int color[3])
+static int	check_color(int color[3])
 {
 	int	i;
 
@@ -100,12 +100,15 @@ void	ft_map(char *str, t_cub *cub)
 
 	if (ft_is_map(str, cub) == 1)
 	{
-		if (check_color(cub->f_color) || check_color(cub->c_color) || cub->NO == NULL ||
-				cub->SO == NULL || cub->WE == NULL ||
-				cub->EA == NULL){
+		if (check_color(cub->f_color) || check_color(cub->c_color)
+			|| cub->no == NULL
+			|| cub->so == NULL || cub->we == NULL
+			|| cub->ea == NULL)
+		{
 			cub->error = 11;
 		}
-		if (ft_strlen(str) > sizeline){
+		if (ft_strlen(str) > sizeline)
+		{
 			sizeline = ft_strlen(str);
 		}
 		nblines = nblines + 1;

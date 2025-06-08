@@ -6,15 +6,15 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 13:48:16 by asobrinh          #+#    #+#             */
-/*   Updated: 2025/05/10 16:11:37 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/06/06 15:47:41 by asobrinh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../includes/cub3d.h"
 
-int		main(int ac, char **av)
+int	main(int ac, char **av)
 {
-	t_cub cub;
+	t_cub	cub;
 
 	ft_init(&cub);
 	if (ac == 2)

@@ -38,6 +38,7 @@ NAME = cub3d
 SRCS =  ./srcs/error/error.c \
 			./srcs/error/error_info_map.c \
 			./srcs/init/init.c \
+			./srcs/init/init_check.c \
 			./srcs/parser/parsing.c \
 			./srcs/parser/parsing_color_resolution.c \
 			./srcs/parser/parsing_map.c \
@@ -46,13 +47,19 @@ SRCS =  ./srcs/error/error.c \
 			./srcs/raycasting/raycasting_texture.c \
 			./srcs/raycasting/raycasting_steps.c \
 			./srcs/raycasting/raycasting_move.c \
+			./srcs/raycasting/raycsting_textura_util.c \
 			./srcs/key/key_press.c \
 			./srcs/utils/aux1.c \
+			./srcs/utils/auxiliar1.c \
+			./srcs/utils/auxiliar2.c \
+			./srcs/utils/auxiliar22.c \
+			./srcs/utils/auxiliar3.c\
 			./srcs/utils/aux2.c \
 			./srcs/utils/aux3.c \
 			./srcs/utils/aux4.c \
 			./srcs/utils/get_next_line.c \
 			./srcs/utils/get_next_line_utils.c \
+			./srcs/utils/get_next_line_utils1.c \
 			./srcs/main.c
 
 OBJSDIR = objectos

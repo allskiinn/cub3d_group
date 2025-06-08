@@ -12,16 +12,22 @@
 
 #include "../../includes/cub3d.h"
 
-static	void	ft_drawstartend(t_cub *cub)
+static void	ft_drawstartend(t_cub *cub)
 {
 	if (cub->ray.side == 0)
-		cub->ray.perpwalldist = ((double)cub->ray.mapx - \
-				cub->ray.posx + (1 - (double)cub->ray.
-				stepx) / 2) / cub->ray.raydirx;
+	{
+		cub->ray.perpwalldist = ((double)cub->ray.mapx \
+			- cub->ray.posx \
+			+ (1.0 - (double)cub->ray.stepx) / 2.0) \
+			/ cub->ray.raydirx;
+	}
 	else
-		cub->ray.perpwalldist = ((double)cub->ray.mapy - \
-				cub->ray.posy + (1 - (double)cub->ray.
-				stepy) / 2) / cub->ray.raydiry;
+	{
+		cub->ray.perpwalldist = ((double)cub->ray.mapy \
+			- cub->ray.posy \
+			+ (1.0 - (double)cub->ray.stepy) / 2.0) \
+			/ cub->ray.raydiry;
+	}
 	cub->ray.lineheight = (int)(cub->ry / cub->ray.perpwalldist);
 	cub->ray.drawstart = -cub->ray.lineheight / 2 + cub->ry / 2;
 	if (cub->ray.drawstart < 0)
@@ -31,7 +37,7 @@ static	void	ft_drawstartend(t_cub *cub)
 		cub->ray.drawend = cub->ry - 1;
 }
 
-static	void	ft_incrementray(t_cub *cub)
+static void	ft_incrementray(t_cub *cub)
 {
 	while (cub->ray.hit == 0)
 	{
@@ -59,25 +65,25 @@ void	ft_stepsidedist(t_cub *cub)
 	{
 		cub->ray.stepx = -1;
 		cub->ray.sidedistx = (cub->ray.posx - cub->ray.mapx) \
-							* cub->ray.deltadistx;
+			* cub->ray.deltadistx;
 	}
 	else
 	{
 		cub->ray.stepx = 1;
 		cub->ray.sidedistx = (cub->ray.mapx + 1.0 - cub->ray.posx) \
-							* cub->ray.deltadistx;
+			* cub->ray.deltadistx;
 	}
 	if (cub->ray.raydiry < 0)
 	{
 		cub->ray.stepy = -1;
 		cub->ray.sidedisty = (cub->ray.posy - cub->ray.mapy) \
-							* cub->ray.deltadisty;
+			* cub->ray.deltadisty;
 	}
 	else
 	{
 		cub->ray.stepy = 1;
 		cub->ray.sidedisty = (cub->ray.mapy + 1.0 - cub->ray.posy) \
-							* cub->ray.deltadisty;
+			* cub->ray.deltadisty;
 	}
 	ft_incrementray(cub);
 }
