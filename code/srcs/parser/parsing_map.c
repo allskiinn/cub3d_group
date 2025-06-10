@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 00:43:58 by aliberal          #+#    #+#             */
-/*   Updated: 2025/05/12 12:17:25 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/06/10 01:54:52 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,17 +82,6 @@ int	ft_is_map(char *str, t_cub *cub)
 	return (0);
 }
 
-static int	check_color(int color[3])
-{
-	int	i;
-
-	i = -1;
-	while (++i < 3)
-		if (color[i] == -1)
-			return (-1);
-	return (0);
-}
-
 void	ft_map(char *str, t_cub *cub)
 {
 	static int	nblines = 0;
@@ -100,13 +89,7 @@ void	ft_map(char *str, t_cub *cub)
 
 	if (ft_is_map(str, cub) == 1)
 	{
-		if (check_color(cub->f_color) || check_color(cub->c_color)
-			|| cub->no == NULL
-			|| cub->so == NULL || cub->we == NULL
-			|| cub->ea == NULL)
-		{
-			cub->error = 11;
-		}
+		check_text_color_error(cub);
 		if (ft_strlen(str) > sizeline)
 		{
 			sizeline = ft_strlen(str);

@@ -34,7 +34,7 @@ RED              := \033[1;31m
 BOLD             := \033[1;1m
 
 # CUB3D
-NAME = cub3d
+NAME = cub3D
 SRCS =  ./srcs/error/error.c \
 			./srcs/error/error_info_map.c \
 			./srcs/init/init.c \

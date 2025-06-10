@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   auxiliar22.c                                       :+:      :+:    :+:   */
+/*   aux8.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asobrinh <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 11:54:57 by asobrinh          #+#    #+#             */
-/*   Updated: 2025/06/07 11:55:19 by asobrinh         ###   ########.fr       */
+/*   Updated: 2025/06/10 02:23:11 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,34 @@ int	ft_check_map_holes(t_cub *cub)
 		i++;
 	}
 	return (0);
+}
+
+static int	check_color(int color[3])
+{
+	int	i;
+
+	i = -1;
+	while (++i < 3)
+		if (color[i] == -1)
+			return (-1);
+	return (0);
+}
+
+void	check_text_color_error(t_cub *cub)
+{
+	if (check_color(cub->f_color) || check_color(cub->c_color)
+		|| cub->no == NULL || cub->so == NULL || cub->we == NULL
+		|| cub->ea == NULL)
+	{
+		if (check_color(cub->f_color) || check_color(cub->c_color))
+			cub->error = 10;
+		else
+		{
+			if (cub->no == NULL || cub->so == NULL || cub->we == NULL
+				|| cub->ea == NULL)
+				cub->error = 1;
+			else
+				cub->error = 11;
+		}
+	}
 }

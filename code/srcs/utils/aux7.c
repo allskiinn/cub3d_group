@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   aux8.c                                             :+:      :+:    :+:   */
+/*   aux7.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 12:08:25 by asobrinh          #+#    #+#             */
-/*   Updated: 2025/06/08 20:57:43 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/06/10 02:12:09 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,24 +26,24 @@ int	ft_verify_ext_dir(char *dir)
 int	ft_verify_textures(t_cub *cub)
 {
 	if (ft_verify_extention(cub->no))
-		return (ret(cub, "Error: Extensao no e invalida.\n"));
+		return (ret(cub, "Error: Invalid NO extension.\n"));
 	else
 		if (ft_verify_ext_dir(cub->no))
-			return (ret(cub, "Error: Textura no nao existe no caminho.\n"));
+			return (ret(cub, "Error: Invalid NO texture path\n"));
 	if (ft_verify_extention(cub->so))
-		return (ret(cub, "Error: Extensao da textura so e invalida.\n"));
+		return (ret(cub, "Error: Invalid SO extension.\n"));
 	else
 		if (ft_verify_ext_dir(cub->so))
-			return (ret(cub, "Error: Textura so nao existe no caminho.\n"));
+			return (ret(cub, "Error: Invalid SO texture path\n"));
 	if (ft_verify_extention(cub->we))
-		return (ret(cub, "Error: Extensao da textura we e invalida.\n"));
+		return (ret(cub, "Error: Invalid WE extension.\n"));
 	else
 		if (ft_verify_ext_dir(cub->we))
-			return (ret(cub, "Error: Textura we nao existe no caminho.\n"));
+			return (ret(cub, "Error: Invalid WE texture path\n"));
 	if (ft_verify_extention(cub->ea))
-		return (ret(cub, "Error: Extensao da textura ea e invalida.\n"));
+		return (ret(cub, "Error: Invalid EA extension.\n"));
 	else
 		if (ft_verify_ext_dir(cub->ea))
-			return (ret(cub, "Error: Textura ea nao existe no caminho.\n"));
+			return (ret(cub, "Error: Invalid EA texture path\n"));
 	return (0);
 }

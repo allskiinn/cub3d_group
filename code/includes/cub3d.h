@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 21:19:04 by aliberal          #+#    #+#             */
-/*   Updated: 2025/05/12 12:24:27 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/06/10 01:50:22 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,6 +169,7 @@ void		ft_map(char *str, t_cub *cub);
 void		ft_color_resolution(char **str, t_cub *cub);
 int			ft_check_cub_extension(char *str, t_cub *cub);
 void		ft_print_map_data(t_cub *cub);
+void		check_text_color_error(t_cub *cub);
 
 /*
 ** check map functions

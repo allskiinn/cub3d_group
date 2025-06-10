@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 14:38:57 by asobrinh          #+#    #+#             */
-/*   Updated: 2025/06/06 15:15:11 by asobrinh         ###   ########.fr       */
+/*   Updated: 2025/06/10 02:08:21 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,31 +63,31 @@ void	interior_map_errors(t_cub *cub, int code)
 static void	items_map_errors_part1(t_cub *cub, int code)
 {
 	if (code == 1)
-		ft_error(cub, "Error\nTexturas nao definidas.\n");
+		ft_error(cub, "Error\nUndefined textures.\n");
 	else if (code == 2)
-		ft_error(cub, "Error\nDupla definicao de textura.\n");
+		ft_error(cub, "Error\nDouble texture definition.\n");
 	else if (code == 3)
-		ft_error(cub, "Error\nSintaxe de textura invalida.\n");
+		ft_error(cub, "Error\nInvalid texture syntax.\n");
 	else if (code == 4)
-		ft_error(cub, "Error\nFalha na alocacao de textura.\n");
+		ft_error(cub, "Error\nTexture allocation failure.\n");
 	else if (code == 5)
-		ft_error(cub, "Error\nCaracter invalido.\n");
+		ft_error(cub, "Error\nInvalid character.\n");
 }
 
 void	items_map_errors(t_cub *cub, int code)
 {
 	if (code == 6)
-		ft_error(cub, "Error\nDupla definicao de resolucoes.\n");
+		ft_error(cub, "Error\nDouble resolution definition..\n");
 	else if (code == 7)
-		ft_error(cub, "Error\nResolucoes invalidas.\n");
+		ft_error(cub, "Error\nInvalid resolution.\n");
 	else if (code == 8)
-		ft_error(cub, "Error\nCores em falta.\n");
+		ft_error(cub, "Error\nMissing colors.\n");
 	else if (code == 9)
-		ft_error(cub, "Error\nSintaxe de cores invalida.\n");
+		ft_error(cub, "Error\nInvalid color syntax\n");
 	else if (code == 10)
-		ft_error(cub, "Error\nNumero de cores invalido.\n");
+		ft_error(cub, "Error\ninvalid color number.\n");
 	else if (code == 11)
-		ft_error(cub, "Error\nElementos apos o mapa.\n");
+		ft_error(cub, "Error\nElements after the map.\n");
 	else
 		items_map_errors_part1(cub, code);
 }
