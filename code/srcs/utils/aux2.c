@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 01:34:43 by aliberal          #+#    #+#             */
-/*   Updated: 2025/06/07 11:40:25 by asobrinh         ###   ########.fr       */
+/*   Updated: 2025/07/02 17:36:37 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,13 +78,13 @@ int	ft_checkplayer(t_cub *cub)
 
 	x = cub->player.x;
 	y = cub->player.y;
-	if (cub->map.grid[x - 1][y] != '1' && cub->map.grid[x - 1][y] != '0')
+	if (cub->map.grid[y - 1][x] != '1' && cub->map.grid[y - 1][x] != '0')
 		return (1);
-	if (cub->map.grid[x + 1][y] != '1' && cub->map.grid[x + 1][y] != '0')
+	if (cub->map.grid[y + 1][x] != '1' && cub->map.grid[y + 1][x] != '0')
 		return (1);
-	if (cub->map.grid[x][y - 1] != '1' && cub->map.grid[x][y - 1] != '0')
+	if (cub->map.grid[y][x - 1] != '1' && cub->map.grid[y][x - 1] != '0')
 		return (1);
-	if (cub->map.grid[x][y + 1] != '1' && cub->map.grid[x][y + 1] != '0')
+	if (cub->map.grid[y][x + 1] != '1' && cub->map.grid[y][x + 1] != '0')
 		return (1);
 	return (0);
 }

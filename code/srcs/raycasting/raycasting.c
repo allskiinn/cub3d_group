@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 22:42:07 by aliberal          #+#    #+#             */
-/*   Updated: 2025/05/11 00:23:09 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/07/06 01:15:06 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,10 @@ int	ft_mlx(t_cub *cub)
 			&cub->img.bpp, &cub->img.line_len, &cub->img.endian);
 	cub->mlx_win = mlx_new_window(cub->mlx_ptr, cub->rx,
 			cub->ry, "CUB3D GAME");
-	mlx_hook(cub->mlx_win, 33, 1L << 17, ft_exit, cub);
-	mlx_hook(cub->mlx_win, 2, 1L << 0, ft_key_press, cub);
 	mlx_loop_hook(cub->mlx_ptr, ft_raycasting, cub);
+	mlx_hook(cub->mlx_win, 2, 1L << 0, ft_key_press, cub);
 	mlx_hook(cub->mlx_win, 3, 1L << 1, ft_key_release, cub);
+	mlx_hook(cub->mlx_win, 33, 1L << 17, ft_exit, cub);
 	mlx_loop(cub->mlx_ptr);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 16:12:49 by aliberal          #+#    #+#             */
-/*   Updated: 2025/05/10 16:13:59 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/07/02 17:45:35 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void	ft_incrementray(t_cub *cub)
 			cub->ray.mapy += cub->ray.stepy;
 			cub->ray.side = 1;
 		}
-		if (cub->map.grid[cub->ray.mapx][cub->ray.mapy] == '1')
+		if (cub->map.grid[cub->ray.mapy][cub->ray.mapx] == '1')
 			cub->ray.hit = 1;
 	}
 	ft_drawstartend(cub);

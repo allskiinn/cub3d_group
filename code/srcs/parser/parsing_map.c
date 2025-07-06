@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 00:43:58 by aliberal          #+#    #+#             */
-/*   Updated: 2025/06/10 01:54:52 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/07/02 17:28:28 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ static int	ft_start(char c, t_cub *cub, int i, int j)
 		if (cub->player.dir != 'x')
 			cub->player.multiplayer = 1;
 		cub->player.dir = c;
-		cub->player.x = i;
-		cub->player.y = j;
+		cub->player.x = j;
+		cub->player.y = i;
 		return (1);
 	}
 	return (0);

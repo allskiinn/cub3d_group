@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 16:07:37 by aliberal          #+#    #+#             */
-/*   Updated: 2025/06/06 15:46:09 by asobrinh         ###   ########.fr       */
+/*   Updated: 2025/07/06 01:15:44 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,6 @@ int	ft_key_press(int keycode, t_cub *cub)
 		cub->rotate_left = 1;
 	else if (keycode == ROTATE_RIGHT)
 		cub->rotate_right = 1;
-	else if (keycode == DARK_MODE)
-		cub->mode = 1;
-	else if (keycode == NORMAL_MODE)
-		cub->mode = 0;
 	else if (keycode == 65307)
 		ft_error(cub, "Game over!\n");
 	return (1);

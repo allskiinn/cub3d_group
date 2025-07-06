@@ -6,38 +6,11 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 15:59:27 by aliberal          #+#    #+#             */
-/*   Updated: 2025/06/08 21:07:50 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/07/02 19:54:43 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
-
-static double	ft_calc_flashlight_intensity(t_cub *cub, int y)
-{
-	t_light	light;
-	double	intensity;
-
-	light.center_x = (double)cub->rx / 2.0;
-	light.center_y = (double)cub->ry / 2.0;
-	light.dx = (double)cub->ray.x - light.center_x;
-	light.dy = (double)y - light.center_y;
-	light.distance = sqrt(light.dx * light.dx + light.dy * light.dy);
-	light.radius = 400.0;
-	if (light.distance > light.radius)
-	{
-		intensity = 0.05;
-	}
-	else
-	{
-		intensity = fmax(0.7, \
-			cos((light.distance / light.radius) * (M_PI / 2.0)));
-	}
-	if (light.distance < light.radius * 0.2)
-		intensity += 0.5;
-	if (intensity > 1.0)
-		intensity = 1.0;
-	return (intensity);
-}
 
 static void	ft_calc_texture_properties(t_cub *cub)
 {
@@ -66,24 +39,11 @@ static void	ft_calc_texture_properties(t_cub *cub)
 
 static void	ft_apply_pixel_color(t_cub *cub, int x, int y, int tex_color)
 {
-	double	intensity;
-
 	if (y >= cub->ry || x >= cub->rx)
 	{
 		return ;
 	}
-	if (!cub->mode)
-	{
-		cub->img.addr[y * cub->img.line_len / 4 + x] = tex_color;
-	}
-	else
-	{
-		intensity = ft_calc_flashlight_intensity(cub, y);
-		cub->img.addr[y * cub->img.line_len / 4 + x] \
-			= ((int)(((tex_color >> 16) & 0xFF) * intensity) << 16) \
-			| ((int)(((tex_color >> 8) & 0xFF) * intensity) << 8) \
-			| ((int)((tex_color & 0xFF) * intensity));
-	}
+	cub->img.addr[y * cub->img.line_len / 4 + x] = tex_color;
 }
 
 static void	ft_draw_wall_loop(t_cub *cub, int x)

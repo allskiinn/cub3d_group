@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 21:19:04 by aliberal          #+#    #+#             */
-/*   Updated: 2025/06/10 01:50:22 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/07/06 01:16:53 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@
 # define FORWARD_W_Z	119
 # define BACK_S_S		115
 # define RIGHT_D_D		100
-# define DARK_MODE		113
-# define NORMAL_MODE	101
 # define LEFT_A_Q		97
 # define BUFFER_SIZE	4096
 
@@ -144,17 +142,6 @@ typedef struct s_gnl_params
 	t_cub		*cub;
 	int			*copy_status;
 }			t_gnl_params;
-
-typedef struct s_light
-{
-	double	center_x;
-	double	center_y;
-	double	dx;
-	double	dy;
-	double	distance;
-	double	radius;
-	double	intensity;
-}			t_light;
 
 /*
 ** parsing functions
