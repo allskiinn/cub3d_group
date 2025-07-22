@@ -28,11 +28,11 @@
         },
         {
             email: "appointment.v2@outlook.com",
-            senha: "Ali$$on1635"
+            senha: "Kel$on1635"
         },
         {
             email: "vfsnew50@outlook.com",
-            senha: "Ali$$on1635"
+            senha: "Kel$on1635"
         },
         {
             email: "vfsnew51@outlook.com",

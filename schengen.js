@@ -34,14 +34,24 @@
             email: "vfsnew53@outlook.com"
         },
         {
-            nome: "vanda",
-            sobrenome: "sapalo",
-            nascimento: "26/11/2001",
-            passaporte: "N3336830",
-            validadePassaporte: "27/06/2034",
+            nome: "antonio",
+            sobrenome: "baptista",
+            nascimento: "23/03/1975",
+            passaporte: "N3624310",
+            validadePassaporte: "14/04/2040",
             cep: "244",
-            telefone: "948764723",
-            email: "vfsnew56@outlook.com"
+            telefone: "942342446",
+            email: "vfsnew54@outlook.com"
+        },
+        {
+            nome: "djaima",
+            sobrenome: "baptista",
+            nascimento: "26/02/2007",
+            passaporte: "N2922892",
+            validadePassaporte: "22/12/2032",
+            cep: "244",
+            telefone: "942342987",
+            email: "vfsnew55@outlook.com"
         }
         // Adicione mais clientes conforme necessário
     ];
