@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 16:09:11 by aliberal          #+#    #+#             */
-/*   Updated: 2025/07/22 21:05:46 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/07/26 13:09:28 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void	ft_init2(t_cub *cub)
 	cub->right = 0;
 	cub->rotate_right = 0;
 	cub->rotate_left = 0;
-	cub->ray.posx = (double)cub->player.x;
-	cub->ray.posy = (double)cub->player.y;
+	cub->ray.posx = (double)cub->player.x + 0.5;
+	cub->ray.posy = (double)cub->player.y + 0.5;
 	cub->ray.dirx = 0;
 	cub->ray.diry = 0;
 	cub->ray.planx = 0;

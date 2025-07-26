@@ -6,11 +6,10 @@
 #    By: aliberal <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/20 13:47:16 by aliberal          #+#    #+#              #
-#    Updated: 2025/07/06 01:17:32 by aliberal         ###   ########.fr        #
+#    Updated: 2025/07/24 14:04:31 by aliberal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# BASIC
 CC = cc -g
 CFLAGS = -Wall -Wextra -Werror -g3
 RM = rm -rf
@@ -23,7 +22,6 @@ MINILIBXDIR = ./minilibx-linux
 WINDOWS_MATH = -lX11 -lXext -lXcursor -lm
 CLEAR = clear
 
-# colors
 RESET            := \033[0m
 GREEN            := \033[32m
 CYAN             := \033[1;36m
@@ -33,7 +31,6 @@ WHITE            := \033[00m
 RED              := \033[1;31m
 BOLD             := \033[1;1m
 
-# CUB3D
 NAME = cub3D
 SRCS =  ./srcs/error/error.c \
 			./srcs/error/error_info_map.c \
@@ -65,7 +62,6 @@ SRCS =  ./srcs/error/error.c \
 OBJSDIR = objectos
 OBJS = $(addprefix $(OBJSDIR)/,$(SRCS:.c=.o))
 
-# MAKE
 all: $(NAME)
 
 $(MINILIBX):

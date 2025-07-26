@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 16:12:49 by aliberal          #+#    #+#             */
-/*   Updated: 2025/07/22 21:46:21 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/07/26 13:09:53 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ static void	ft_drawstartend(t_cub *cub)
 			+ (1 - (double)cub->ray.stepy) / 2) \
 			/ cub->ray.raydiry;
 	}
-	if (cub->ray.perpwalldist == 0)
-		cub->ray.perpwalldist = 0.0001;
 	cub->ray.lineheight = (int)(cub->ry / cub->ray.perpwalldist);
 	cub->ray.drawstart = -cub->ray.lineheight / 2 + cub->ry / 2;
 	if (cub->ray.drawstart < 0)
