@@ -5,96 +5,84 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/04 14:49:24 by ebourdit          #+#    #+#             */
-/*   Updated: 2025/05/08 02:22:09 by aliberal         ###   ########.fr       */
+/*   Created: 2025/07/28 05:10:53 by aliberal          #+#    #+#             */
+/*   Updated: 2025/07/28 05:10:56 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "./../../includes/cub3d.h"
 
-static int	ft_eof(int ret, char **buff, char **line)
+void	free_null(char **ptr)
 {
-	if (ret == -1)
-		return (-1);
-	free(*buff);
-	*buff = NULL;
-	if (!*line)
+	if (*ptr != NULL)
 	{
-		*line = malloc(sizeof(char) * 1);
-		if (!*line)
-			return (-1);
-		*line[0] = 0;
+		free(*ptr);
+		*ptr = NULL;
 	}
-	return (0);
 }
 
-static int	ft_init_buff(char **buff_ptr)
+char	*join_line(int nl_position, char **buffer)
 {
-	if (!(*buff_ptr))
+	char	*res;
+	char	*tmp;
+
+	tmp = NULL;
+	if (nl_position <= 0)
 	{
-		*buff_ptr = malloc(sizeof(char) * BUFFER_SIZE + 1);
-		if (!(*buff_ptr))
-			return (-1);
+		if (**buffer == '\0')
+		{
+			free(*buffer);
+			*buffer = NULL;
+			return (NULL);
+		}
+		res = *buffer;
+		*buffer = NULL;
+		return (res);
 	}
-	return (0);
+	tmp = ft_substr(*buffer, nl_position, BUFFER_SIZE);
+	res = *buffer;
+	res[nl_position - 1] = 0;
+	*buffer = tmp;
+	return (res);
 }
 
-static int	ft_gnl_initial_setup(int fd, t_gnl_params *p)
+char	*read_line(int fd, char **buffer, char *read_return)
 {
-	if (p->cub->error && *(p->buff))
+	ssize_t	bytes_read;
+	char	*tmp;
+	char	*nl;
+
+	nl = ft_strchr(*buffer, '\n');
+	tmp = NULL;
+	bytes_read = 0;
+	while (nl == NULL)
 	{
-		free(*(p->buff));
-		return (0);
+		bytes_read = read(fd, read_return, BUFFER_SIZE);
+		if (bytes_read <= 0)
+			return (join_line(bytes_read, buffer));
+		read_return[bytes_read] = 0;
+		tmp = ft_strjoin(*buffer, read_return);
+		free_null(buffer);
+		*buffer = tmp;
+		nl = ft_strchr(*buffer, '\n');
 	}
-	if (fd < 0 || BUFFER_SIZE <= 0 || !p->line)
-		return (-1);
-	*(p->line) = NULL;
-	*(p->copy_status) = 1;
-	if (*(p->buff))
-	{
-		*(p->copy_status) = ft_copy(p->line, p->buff);
-		if (*(p->copy_status) == 0)
-			return (1);
-	}
-	if (ft_init_buff(p->buff) == -1)
-		return (-1);
-	return (42);
+	return (join_line(nl - *buffer + 1, buffer));
 }
 
-static int	ft_process_read_and_status(int fd, t_gnl_params *p,
-	int *read_bytes_ptr)
+char	*get_next_line(int fd)
 {
-	*read_bytes_ptr = read(fd, *(p->buff), BUFFER_SIZE);
-	if (*read_bytes_ptr < 0)
-		return (-1);
-	if (*read_bytes_ptr == 0)
-		return (ft_eof(*read_bytes_ptr, p->buff, p->line));
-	(*(p->buff))[*read_bytes_ptr] = '\0';
-	*(p->copy_status) = ft_copy(p->line, p->buff);
-	if (*(p->copy_status) == 0)
-		return (1);
-	return (42);
-}
+	static char	*buffer[256 + 1];
+	char		*read_return;
+	char		*res;
 
-int	get_next_line(int fd, char **line, t_cub *cub)
-{
-	static char		*buff = NULL;
-	int				read_bytes;
-	int				ret_code;
-	int				copy_status;
-	t_gnl_params	params;
-
-	params.buff = &buff;
-	params.line = line;
-	params.cub = cub;
-	params.copy_status = &copy_status;
-	ret_code = ft_gnl_initial_setup(fd, &params);
-	if (ret_code != 42)
-		return (ret_code);
-	while (1)
-	{
-		ret_code = ft_process_read_and_status(fd, &params, &read_bytes);
-		if (ret_code != 42)
-			return (ret_code);
-	}
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd > 256)
+		return (NULL);
+	read_return = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1);
+	if (read_return == NULL)
+		return (NULL);
+	if (!buffer[fd])
+		buffer[fd] = ft_strdup("");
+	res = read_line(fd, &buffer[fd], read_return);
+	free_null(&read_return);
+	return (res);
 }

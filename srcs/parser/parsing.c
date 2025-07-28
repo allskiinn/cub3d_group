@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 00:23:21 by aliberal          #+#    #+#             */
-/*   Updated: 2025/06/10 02:21:34 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/07/28 05:03:29 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,10 @@
 static int	ft_parse_map_lines(int fd, t_cub *cub)
 {
 	char	*str;
-	int		status;
 
-	status = 1;
-	str = NULL;
-	while (status != 0)
+	str = get_next_line(fd);
+	while (str)
 	{
-		status = get_next_line(fd, &str, cub);
 		if (cub->map.insidemap == 1 && ft_emptyline(str) == 0
 			&& cub->map.count < cub->map.height)
 			cub->map.emptyline = 1;
@@ -32,7 +29,7 @@ static int	ft_parse_map_lines(int fd, t_cub *cub)
 			ft_copy_map(str, cub);
 		}
 		free(str);
-		str = NULL;
+		str = get_next_line(fd);
 	}
 	return (0);
 }
@@ -65,24 +62,21 @@ static int	ft_parsing_map(char *file, t_cub *cub)
 static int	ft_main_parsing_loop(int fd, t_cub *cub)
 {
 	char	*str;
-	int		status;
 
-	status = 1;
-	str = NULL;
-	while (status != 0)
+	str = get_next_line(fd);
+	while (str)
 	{
-		status = get_next_line(fd, &str, cub);
-		if (cub->error)
-		{
-			items_map_errors(cub, cub->error);
-			free(str);
-			return (1);
-		}
-		ft_color_resolution(&str, cub);
+		ft_color(&str, cub);
 		ft_texture(str, cub);
 		ft_map(str, cub);
 		free(str);
-		str = NULL;
+		str = get_next_line(fd);
+	}
+	if (cub->error)
+	{
+		items_map_errors(cub, cub->error);
+		free(str);
+		return (1);
 	}
 	return (0);
 }

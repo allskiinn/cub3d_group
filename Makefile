@@ -6,7 +6,7 @@
 #    By: aliberal <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/20 13:47:16 by aliberal          #+#    #+#              #
-#    Updated: 2025/07/24 14:04:31 by aliberal         ###   ########.fr        #
+#    Updated: 2025/07/27 09:50:43 by aliberal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,6 @@ SRCS =  ./srcs/error/error.c \
 			./srcs/utils/aux8.c \
 			./srcs/utils/get_next_line.c \
 			./srcs/utils/get_next_line_utils.c \
-			./srcs/utils/get_next_line_utils1.c \
 			./srcs/main.c
 
 OBJSDIR = objectos

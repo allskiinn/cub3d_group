@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 21:19:04 by aliberal          #+#    #+#             */
-/*   Updated: 2025/07/25 19:29:50 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/07/28 05:06:37 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,21 +127,10 @@ typedef struct s_cub
 	int				right;
 	int				rotate_left;
 	int				rotate_right;
-	int				screenx;
-	int				screeny;
-	int				mode;
 	int				error;
 	int				i;
 	int				j;
 }			t_cub;
-
-typedef struct s_gnl_params
-{
-	char		**buff;
-	char		**line;
-	t_cub		*cub;
-	int			*copy_status;
-}			t_gnl_params;
 
 /*
 ** parsing functions
@@ -153,7 +142,7 @@ int			ft_copy_map(char *str, t_cub *cub);
 void		ft_init(t_cub *cub);
 void		ft_texture(char *str, t_cub *cub);
 void		ft_map(char *str, t_cub *cub);
-void		ft_color_resolution(char **str, t_cub *cub);
+void		ft_color(char **str, t_cub *cub);
 int			ft_check_cub_extension(char *str, t_cub *cub);
 void		ft_print_map_data(t_cub *cub);
 void		check_text_color_error(t_cub *cub);
@@ -213,7 +202,7 @@ int			ft_color_column(t_cub *cub);
 */
 void		ft_stepsidedist(t_cub *cub);
 void		ft_load_texture_img(t_cub *cub, void **img_ptr,
-				char *path, int idx); // Line break added
+				char *path, int idx);
 void		ft_get_texture(t_cub *cub);
 int			ft_get_texdir(t_ray *ray);
 
@@ -226,23 +215,22 @@ int			ft_key_release(int keycode, t_cub *cub);
 /*
 ** utils functions
 */
-int			get_next_line(int fd, char **line, t_cub *cub);
+char		*get_next_line(int fd);
+char		*ft_strchr(const char *str, int n);
+size_t		ft_strlen3(const char *str);
+char		*ft_strdup(const char *str);
+char		*ft_substr(char const *s, unsigned int start, size_t len);
+char		*ft_strjoin(char const *s1, char const *s2);
 int			ft_strlen(char *str);
-int			ft_atoi2(const char *str, t_cub *cub);
 int			ft_strlen2(char *str);
 int			ft_tolower(int c);
-char		*ft_subbuff(char *buff, int start, int len);
-char		*ft_strjoin(char *s1, char *s2);
-char		*ft_substr(char const *s, unsigned int start, size_t len);
 void		ft_atoi3(const char *str, t_cub *cub, char type);
 void		ft_atoi3_skip_whitespace(const char *str, t_cub *cub);
 int			ft_atoi3_parse_digits(const char *str, t_cub *cub);
 void		ft_atoi3_assign_color(t_cub *cub, char type, int verify, int *c);
 void		ft_atoi3_handle_spacing(const char *str, t_cub *cub);
 void		ft_atoi3_process_component(const char *str, t_cub *cub,
-				char type, int *c); // Line break added
-int			ft_check(char *str);
-int			ft_copy(char **line, char **buff);
+				char type, int *c);
 
 /*
 ** error

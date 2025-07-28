@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 14:38:57 by asobrinh          #+#    #+#             */
-/*   Updated: 2025/06/10 02:08:21 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/07/27 08:24:40 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,7 @@ static void	items_map_errors_part1(t_cub *cub, int code)
 
 void	items_map_errors(t_cub *cub, int code)
 {
-	if (code == 6)
-		ft_error(cub, "Error\nDouble resolution definition..\n");
-	else if (code == 7)
-		ft_error(cub, "Error\nInvalid resolution.\n");
-	else if (code == 8)
+	if (code == 8)
 		ft_error(cub, "Error\nMissing colors.\n");
 	else if (code == 9)
 		ft_error(cub, "Error\nInvalid color syntax\n");

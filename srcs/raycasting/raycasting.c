@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 22:42:07 by aliberal          #+#    #+#             */
-/*   Updated: 2025/07/25 19:29:01 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/07/27 08:27:49 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,7 @@ int	ft_mlx(t_cub *cub)
 	cub->mlx_ptr = mlx_init();
 	if (!cub->mlx_ptr)
 		ft_error(cub, "Mlx init impossible\n");
-	mlx_get_screen_size(cub->mlx_ptr, &cub->screenx, &cub->screeny);
-	if (cub->rx > cub->screenx)
-		cub->rx = cub->screenx;
-	if (cub->ry > cub->screeny)
-		cub->ry = cub->screeny;
+	mlx_get_screen_size(cub->mlx_ptr, &cub->rx, &cub->ry);
 	ft_get_texture(cub);
 	cub->img.img_ptr = mlx_new_image(cub->mlx_ptr, cub->rx, cub->ry);
 	cub->img.addr = (int *)mlx_get_data_addr(cub->img.img_ptr,

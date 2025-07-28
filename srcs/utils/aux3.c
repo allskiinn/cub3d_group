@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 12:57:29 by asobrinh          #+#    #+#             */
-/*   Updated: 2025/05/10 01:51:58 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/07/28 04:17:30 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,16 @@ int	ft_verify_extention(char *t)
 	else
 		return (1);
 	return (0);
+}
+
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (!str)
+		return (0);
+	while (str[i])
+		i++;
+	return (i);
 }

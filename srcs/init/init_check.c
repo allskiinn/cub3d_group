@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 16:22:34 by asobrinh          #+#    #+#             */
-/*   Updated: 2025/07/22 23:07:48 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/07/27 08:27:03 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ int	ft_check_cub_extension(char *str, t_cub *cub)
 			return (0);
 		}
 	}
-	if (str[i + 1] == 'c' && str[i + 2] == 'u' && str[i + 3] == 'b')
+	if (str[i + 1] == 'c' && str[i + 2] == 'u' && str[i + 3] == 'b'
+		&& !str[i + 4])
 		return (1);
 	ft_error(cub, "Invalid map name\n");
 	return (0);

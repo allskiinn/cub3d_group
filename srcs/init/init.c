@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 00:59:07 by aliberal          #+#    #+#             */
-/*   Updated: 2025/07/20 15:50:26 by aliberal         ###   ########.fr       */
+/*   Updated: 2025/07/27 08:44:31 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ void	ft_init(t_cub *cub)
 {
 	cub->rx = 0;
 	cub->ry = 0;
-	cub->mode = 0;
 	cub->no = NULL;
 	cub->so = NULL;
 	cub->we = NULL;

@@ -5,90 +5,98 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/04 03:53:57 by aliberal          #+#    #+#             */
-/*   Updated: 2025/05/04 18:40:23 by aliberal         ###   ########.fr       */
+/*   Created: 2025/07/28 03:55:21 by aliberal          #+#    #+#             */
+/*   Updated: 2025/07/28 05:10:34 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "./../../includes/cub3d.h"
 
-int	ft_strlen(char *str)
+char	*ft_strchr(const char *str, int n)
 {
-	int	i;
+	char	*tmp;
 
-	i = 0;
-	if (!str)
-		return (0);
-	while (str[i])
-		i++;
-	return (i);
+	tmp = (char *) str;
+	while (*tmp != (char)n)
+	{
+		if (*tmp == 0)
+			return (NULL);
+		tmp++;
+	}
+	return ((char *)tmp);
+}
+
+size_t	ft_strlen3(const char *str)
+{
+	size_t	a;
+
+	a = 0;
+	while (str[a])
+		a++;
+	return (a);
+}
+
+char	*ft_strdup(const char *str)
+{
+	size_t	i;
+	size_t	len;
+	char	*s;
+
+	len = ft_strlen3(str) + 1;
+	s = (char *)malloc(sizeof(char) * len);
+	if (s == NULL)
+		return (NULL);
+	i = -1;
+	while (++i < len)
+		s[i] = str[i];
+	return (s);
 }
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*str;
 	size_t	i;
+	size_t	srclen;
+	char	*str;
 
-	i = 0;
-	str = malloc(sizeof(char) * (len + 1));
+	if (!s)
+		return (NULL);
+	srclen = ft_strlen3(s);
+	if (start > srclen)
+		return (ft_strdup(""));
+	if (start + len > srclen)
+		len = srclen - start;
+	str = (char *)malloc(sizeof(char) * len + 1);
 	if (!str)
 		return (NULL);
-	if (start < (unsigned int)ft_strlen((char *)s))
+	i = 0;
+	while (s[start + i] && i < len)
 	{
-		while (s[start] != '\0' && i < len)
-		{
-			str[i] = s[start];
-			i++;
-			start++;
-		}
+		str[i] = s[start + i];
+		i++;
 	}
 	str[i] = '\0';
 	return (str);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*str;
 	int		i;
 	int		j;
+	size_t	size;
 
-	str = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!s1 || !s2)
+		return (NULL);
+	size = ft_strlen3(s1) + ft_strlen3(s2) + 1;
+	str = (char *)malloc(sizeof(char) * size);
 	if (!str)
 		return (NULL);
-	i = 0;
-	while (s1 && s1[i])
-	{
+	i = -1;
+	while (s1[++i])
 		str[i] = s1[i];
-		i++;
-	}
-	j = 0;
-	while (s2 && s2[j])
-	{
-		str[i] = s2[j];
-		j++;
-		i++;
-	}
-	str[i] = '\0';
+	j = -1;
+	while (s2[++j])
+		str[i + j] = s2[j];
+	str[i + j] = '\0';
 	return (str);
-}
-
-char	*ft_subbuff(char *buff, int start, int len)
-{
-	int		i;
-	char	*str;
-
-	str = NULL;
-	str = ft_strjoin(str, buff);
-	if (!str)
-		return (NULL);
-	i = 0;
-	while (str[i] != '\0' && i < len)
-	{
-		buff[i] = str[start];
-		i++;
-		start++;
-	}
-	buff[i] = 0;
-	free(str);
-	return (buff);
 }
