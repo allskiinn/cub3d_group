@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 22:42:07 by aliberal          #+#    #+#             */
-/*   Updated: 2025/07/27 08:27:49 by aliberal         ###   ########.fr       */
+/*   Updated: 2026/01/07 18:18:51 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@ int	ft_raycasting(t_cub *cub)
 	return (0);
 }
 
+static	int	exit_game(t_cub *data)
+{
+	ft_error(data, "Game over!\n");
+	exit(0);
+}
+
 int	ft_mlx(t_cub *cub)
 {
 	ft_init2(cub);
@@ -46,6 +52,7 @@ int	ft_mlx(t_cub *cub)
 	mlx_loop_hook(cub->mlx_ptr, ft_raycasting, cub);
 	mlx_hook(cub->mlx_win, 2, 1L << 0, ft_key_press, cub);
 	mlx_hook(cub->mlx_win, 3, 1L << 1, ft_key_release, cub);
+	mlx_hook(cub->mlx_win, 17, 0, exit_game, cub);
 	mlx_hook(cub->mlx_win, 33, 1L << 17, ft_exit, cub);
 	mlx_loop(cub->mlx_ptr);
 	return (0);

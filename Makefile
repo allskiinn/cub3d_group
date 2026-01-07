@@ -6,7 +6,7 @@
 #    By: aliberal <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/20 13:47:16 by aliberal          #+#    #+#              #
-#    Updated: 2025/07/27 09:50:43 by aliberal         ###   ########.fr        #
+#    Updated: 2026/01/07 17:02:30 by aliberal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ CFLAGS = -Wall -Wextra -Werror -g3
 RM = rm -rf
 LIBFT = libft.a
 MINILIBX = libmlx.a
+INCLUDE = ./includes/cub3d.h
 
 LIBFTDIR = ./libft
 MINILIBXDIR = ./minilibx-linux
@@ -73,7 +74,7 @@ $(NAME): $(MINILIBX) $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -L. -L. -lmlx $(WINDOWS_MATH) -o $(NAME)
 	@echo "$(GREEN)$(BOLD)Executavel criado!$(RESET)"
 
-$(OBJSDIR)/%.o: %.c
+$(OBJSDIR)/%.o: %.c $(INCLUDE)
 	mkdir -p $(@D)
 	$(CC) $(CFLAGS) -c $< -o $@
 
@@ -94,13 +95,3 @@ fclean: clean
 re: fclean all
 	@$(CLEAR)
 	@echo "$(GREEN)$(BOLD)Recompilado com sucesso!$(RESET)"
-
-norm:
-	@$(CLEAR)
-	@echo "$(GREEN)$(BOLD)Norminette!$(RESET)"
-	norminette ./includes/*
-	norminette ./srcs/*
-
-.PHONY: clean fclean all re
-
-.SILENT:
