@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 15:59:27 by aliberal          #+#    #+#             */
-/*   Updated: 2026/01/07 17:07:57 by aliberal         ###   ########.fr       */
+/*   Updated: 2026/01/09 03:49:25 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	ft_calc_texture_properties(t_cub *cub)
 {
 	cub->tex.texdir = ft_get_texdir(&cub->ray);
-	if (cub->ray.side == 0)
+	if (cub->ray.side == VERTICAL)
 	{
 		cub->tex.wallx = cub->ray.posy \
 			+ cub->ray.perpwalldist * cub->ray.raydiry;

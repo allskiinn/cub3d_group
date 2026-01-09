@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 16:12:49 by aliberal          #+#    #+#             */
-/*   Updated: 2025/07/26 13:09:53 by aliberal         ###   ########.fr       */
+/*   Updated: 2026/01/09 10:26:58 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,10 @@
 
 static void	ft_drawstartend(t_cub *cub)
 {
-	if (cub->ray.side == 0)
-	{
-		cub->ray.perpwalldist = ((double)cub->ray.mapx \
-			- cub->ray.posx \
-			+ (1 - (double)cub->ray.stepx) / 2) \
-			/ cub->ray.raydirx;
-	}
+	if (cub->ray.side == VERTICAL)
+		cub->ray.perpwalldist = (cub->ray.sidedistx - cub->ray.deltadistx);
 	else
-	{
-		cub->ray.perpwalldist = ((double)cub->ray.mapy \
-			- cub->ray.posy \
-			+ (1 - (double)cub->ray.stepy) / 2) \
-			/ cub->ray.raydiry;
-	}
+		cub->ray.perpwalldist = (cub->ray.sidedisty - cub->ray.deltadisty);
 	cub->ray.lineheight = (int)(cub->ry / cub->ray.perpwalldist);
 	cub->ray.drawstart = -cub->ray.lineheight / 2 + cub->ry / 2;
 	if (cub->ray.drawstart < 0)
@@ -39,7 +29,7 @@ static void	ft_drawstartend(t_cub *cub)
 
 static void	ft_incrementray(t_cub *cub)
 {
-	while (cub->ray.hit == 0)
+	while (!cub->ray.hit)
 	{
 		if (cub->ray.sidedistx < cub->ray.sidedisty)
 		{

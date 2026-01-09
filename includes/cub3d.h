@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 21:19:04 by aliberal          #+#    #+#             */
-/*   Updated: 2026/01/07 17:02:47 by aliberal         ###   ########.fr       */
+/*   Updated: 2026/01/09 10:27:54 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define RIGHT_D_D		100
 # define LEFT_A_Q		97
 # define BUFFER_SIZE	4096
+# define VERTICAL		0
 
 typedef struct s_player
 {
@@ -50,8 +51,6 @@ typedef struct s_map
 
 typedef struct s_ray
 {
-	double	raydirx;
-	double	raydiry;
 	double	posx;
 	double	posy;
 	double	dirx;
@@ -69,6 +68,8 @@ typedef struct s_ray
 	int		stepy;
 	int		hit;
 	int		side;
+	double	raydirx;
+	double	raydiry;	
 	double	perpwalldist;
 	int		lineheight;
 	int		drawstart;

@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 16:09:11 by aliberal          #+#    #+#             */
-/*   Updated: 2025/07/27 08:45:36 by aliberal         ###   ########.fr       */
+/*   Updated: 2026/01/09 03:49:38 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,22 +51,14 @@ void	ft_init2(t_cub *cub)
 
 static	void	ft_init_more3(t_cub *cub)
 {
-	if (cub->ray.raydiry == 0)
-		cub->ray.deltadistx = 0;
-	else if (cub->ray.raydirx == 0)
-		cub->ray.deltadistx = 1;
-	else
-		cub->ray.deltadistx = sqrt(1 + (cub->ray.raydiry
-					* cub->ray.raydiry) / (cub->ray.raydirx
-					* cub->ray.raydirx));
 	if (cub->ray.raydirx == 0)
-		cub->ray.deltadisty = 0;
-	else if (cub->ray.raydiry == 0)
-		cub->ray.deltadisty = 1;
+		cub->ray.deltadistx = 1e30;
 	else
-		cub->ray.deltadisty = sqrt(1 + (cub->ray.raydirx
-					* cub->ray.raydirx) / (cub->ray.raydiry
-					* cub->ray.raydiry));
+		cub->ray.deltadistx = fabs(1 / cub->ray.raydirx);
+	if (cub->ray.raydiry == 0)
+		cub->ray.deltadisty = 1e30;
+	else
+		cub->ray.deltadisty = fabs(1 / cub->ray.raydiry);
 }
 
 void	ft_init3(t_cub *cub)
