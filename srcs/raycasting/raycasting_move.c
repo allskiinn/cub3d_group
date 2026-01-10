@@ -20,14 +20,14 @@ static void	ft_rotate_left(t_cub *cub, double olddirx)
 	{
 		olddirx = cub->dirx;
 		oldplanex = cub->ray.planx;
-		cub->dirx = cub->dirx * cos(-cub->ray.rotspeed) - \
-			cub->diry * sin(-cub->ray.rotspeed);
-		cub->diry = olddirx * sin(-cub->ray.rotspeed) + \
-			cub->diry * cos(-cub->ray.rotspeed);
-		cub->ray.planx = cub->ray.planx * cos(-cub->ray.rotspeed) - \
-			cub->ray.plany * sin(-cub->ray.rotspeed);
-		cub->ray.plany = oldplanex * sin(-cub->ray.rotspeed) + \
-			cub->ray.plany * cos(-cub->ray.rotspeed);
+		cub->dirx = cub->dirx * cos(-cub->ray.rotspeed)
+			- cub->diry * sin(-cub->ray.rotspeed);
+		cub->diry = olddirx * sin(-cub->ray.rotspeed)
+			+ cub->diry * cos(-cub->ray.rotspeed);
+		cub->ray.planx = cub->ray.planx * cos(-cub->ray.rotspeed)
+			- cub->ray.plany * sin(-cub->ray.rotspeed);
+		cub->ray.plany = oldplanex * sin(-cub->ray.rotspeed)
+			+ cub->ray.plany * cos(-cub->ray.rotspeed);
 	}
 }
 
@@ -40,14 +40,14 @@ void	ft_rotate_right_left(t_cub *cub)
 	olddirx = cub->dirx;
 	if (cub->rotate_right == 1)
 	{
-		cub->dirx = cub->dirx * cos(cub->ray.rotspeed) - \
-			cub->diry * sin(cub->ray.rotspeed);
-		cub->diry = olddirx * sin(cub->ray.rotspeed) + \
-			cub->diry * cos(cub->ray.rotspeed);
-		cub->ray.planx = cub->ray.planx * cos(cub->ray.rotspeed) - \
-			cub->ray.plany * sin(cub->ray.rotspeed);
-		cub->ray.plany = oldplanx * sin(cub->ray.rotspeed) + \
-			cub->ray.plany * cos(cub->ray.rotspeed);
+		cub->dirx = cub->dirx * cos(cub->ray.rotspeed)
+			- cub->diry * sin(cub->ray.rotspeed);
+		cub->diry = olddirx * sin(cub->ray.rotspeed)
+			+ cub->diry * cos(cub->ray.rotspeed);
+		cub->ray.planx = cub->ray.planx * cos(cub->ray.rotspeed)
+			- cub->ray.plany * sin(cub->ray.rotspeed);
+		cub->ray.plany = oldplanx * sin(cub->ray.rotspeed)
+			+ cub->ray.plany * cos(cub->ray.rotspeed);
 	}
 	ft_rotate_left(cub, olddirx);
 }
@@ -56,20 +56,20 @@ void	ft_forward_back(t_cub *cub)
 {
 	if (cub->forward == 1)
 	{
-		if (cub->map.grid[(int)(cub->ray.posy + cub->diry * \
-			cub->ray.movespeed * 2)][(int)cub->ray.posx] == '0')
+		if (cub->map.grid[(int)(cub->ray.posy + cub->diry
+				* cub->ray.movespeed * 2)][(int)cub->ray.posx] == '0')
 			cub->ray.posy += cub->diry * cub->ray.movespeed;
-		if (cub->map.grid[(int)(cub->ray.posy)][(int)(cub->ray.posx + \
-			cub->dirx * cub->ray.movespeed * 2)] == '0')
+		if (cub->map.grid[(int)(cub->ray.posy)][(int)(cub->ray.posx
+			+ cub->dirx * cub->ray.movespeed * 2)] == '0')
 			cub->ray.posx += cub->dirx * cub->ray.movespeed;
 	}
 	if (cub->back == 1)
 	{
-		if (cub->map.grid[(int)(cub->ray.posy - cub->diry * \
-			cub->ray.movespeed * 2)][(int)(cub->ray.posx)] == '0')
+		if (cub->map.grid[(int)(cub->ray.posy - cub->diry
+				* cub->ray.movespeed * 2)][(int)(cub->ray.posx)] == '0')
 			cub->ray.posy -= cub->diry * cub->ray.movespeed;
-		if (cub->map.grid[(int)(cub->ray.posy)][(int)(cub->ray.posx - \
-			cub->dirx * cub->ray.movespeed * 2)] == '0')
+		if (cub->map.grid[(int)(cub->ray.posy)][(int)(cub->ray.posx
+			- cub->dirx * cub->ray.movespeed * 2)] == '0')
 			cub->ray.posx -= cub->dirx * cub->ray.movespeed;
 	}
 }
@@ -78,20 +78,20 @@ void	ft_left_right(t_cub *cub)
 {
 	if (cub->right == 1)
 	{
-		if (cub->map.grid[(int)(cub->ray.posy + cub->dirx * \
-			cub->ray.movespeed * 2)][(int)cub->ray.posx] == '0')
+		if (cub->map.grid[(int)(cub->ray.posy + cub->dirx
+				* cub->ray.movespeed * 2)][(int)cub->ray.posx] == '0')
 			cub->ray.posy += cub->dirx * cub->ray.movespeed;
-		if (cub->map.grid[(int)cub->ray.posy][(int)(cub->ray.posx - \
-			cub->diry * cub->ray.movespeed * 2)] == '0')
+		if (cub->map.grid[(int)cub->ray.posy][(int)(cub->ray.posx
+			- cub->diry * cub->ray.movespeed * 2)] == '0')
 			cub->ray.posx -= cub->diry * cub->ray.movespeed;
 	}
 	if (cub->left == 1)
 	{
-		if (cub->map.grid[(int)(cub->ray.posy - cub->dirx * \
-			cub->ray.movespeed * 2)][(int)cub->ray.posx] == '0')
+		if (cub->map.grid[(int)(cub->ray.posy - cub->dirx
+				* cub->ray.movespeed * 2)][(int)cub->ray.posx] == '0')
 			cub->ray.posy -= cub->dirx * cub->ray.movespeed;
-		if (cub->map.grid[(int)cub->ray.posy][(int)(cub->ray.posx + \
-			cub->diry * cub->ray.movespeed * 2)] == '0')
+		if (cub->map.grid[(int)cub->ray.posy][(int)(cub->ray.posx
+			+ cub->diry * cub->ray.movespeed * 2)] == '0')
 			cub->ray.posx += cub->diry * cub->ray.movespeed;
 	}
 }

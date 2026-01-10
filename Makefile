@@ -45,7 +45,7 @@ SRCS =  ./srcs/error/error.c \
 			./srcs/raycasting/raycasting_texture.c \
 			./srcs/raycasting/raycasting_steps.c \
 			./srcs/raycasting/raycasting_move.c \
-			./srcs/raycasting/raycsting_textura_util.c \
+			./srcs/raycasting/raycasting_texture_util.c \
 			./srcs/key/key_press.c \
 			./srcs/utils/aux1.c \
 			./srcs/utils/aux2.c \

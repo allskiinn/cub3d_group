@@ -54,25 +54,25 @@ void	ft_stepsidedist(t_cub *cub)
 	if (cub->ray.raydirx < 0)
 	{
 		cub->ray.stepx = -1;
-		cub->ray.sidedistx = (cub->ray.posx - cub->ray.mapx) \
+		cub->ray.sidedistx = (cub->ray.posx - cub->ray.mapx)
 			* cub->ray.deltadistx;
 	}
 	else
 	{
 		cub->ray.stepx = 1;
-		cub->ray.sidedistx = (cub->ray.mapx + 1.0 - cub->ray.posx) \
+		cub->ray.sidedistx = (cub->ray.mapx + 1.0 - cub->ray.posx)
 			* cub->ray.deltadistx;
 	}
 	if (cub->ray.raydiry < 0)
 	{
 		cub->ray.stepy = -1;
-		cub->ray.sidedisty = (cub->ray.posy - cub->ray.mapy) \
+		cub->ray.sidedisty = (cub->ray.posy - cub->ray.mapy)
 			* cub->ray.deltadisty;
 	}
 	else
 	{
 		cub->ray.stepy = 1;
-		cub->ray.sidedisty = (cub->ray.mapy + 1.0 - cub->ray.posy) \
+		cub->ray.sidedisty = (cub->ray.mapy + 1.0 - cub->ray.posy)
 			* cub->ray.deltadisty;
 	}
 	ft_incrementray(cub);

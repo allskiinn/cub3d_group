@@ -22,7 +22,7 @@ static	void	ft_init_dir(t_cub *cub)
 	if (cub->player.dir == 'S')
 	{
 		cub->diry = 1;
-		cub->ray.planx = -cub->diry *  FOV;
+		cub->ray.planx = -cub->diry * FOV;
 	}
 	if (cub->player.dir == 'E')
 	{
@@ -70,10 +70,8 @@ void	ft_init3(t_cub *cub)
 	cub->ray.hit = 0;
 	cub->ray.perpwalldist = 0;
 	cub->ray.camerax = 2 * cub->ray.x / (double)cub->rx - 1;
-	cub->ray.raydirx = cub->dirx + cub->ray.planx * \
-						cub->ray.camerax;
-	cub->ray.raydiry = cub->diry + cub->ray.plany * \
-						cub->ray.camerax;
+	cub->ray.raydirx = cub->dirx + cub->ray.planx * cub->ray.camerax;
+	cub->ray.raydiry = cub->diry + cub->ray.plany * cub->ray.camerax;
 	cub->ray.mapx = (int)cub->ray.posx;
 	cub->ray.mapy = (int)cub->ray.posy;
 	cub->ray.movespeed = 0.1;
