@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 22:42:07 by aliberal          #+#    #+#             */
-/*   Updated: 2026/01/09 10:27:00 by aliberal         ###   ########.fr       */
+/*   Updated: 2026/01/09 20:12:52 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_raycasting(t_cub *cub)
 {
 	cub->ray.x = 0;
-	while (cub->ray.x < cub->rx)
+	while (cub->ray.x <= cub->rx)
 	{
 		ft_init3(cub);
 		ft_stepsidedist(cub);

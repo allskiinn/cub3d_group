@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 16:09:11 by aliberal          #+#    #+#             */
-/*   Updated: 2026/01/09 03:49:38 by aliberal         ###   ########.fr       */
+/*   Updated: 2026/01/09 19:15:55 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,25 @@
 static	void	ft_init_dir(t_cub *cub)
 {
 	if (cub->player.dir == 'N')
-		cub->ray.dirx = -1;
+	{
+		cub->diry = -1;
+		cub->ray.planx = FOV;
+	}
 	if (cub->player.dir == 'S')
-		cub->ray.dirx = 1;
+	{
+		cub->diry = 1;
+		cub->ray.planx = -cub->diry *  FOV;
+	}
 	if (cub->player.dir == 'E')
-		cub->ray.diry = 1;
+	{
+		cub->dirx = 1;
+		cub->ray.plany = FOV;
+	}
 	if (cub->player.dir == 'W')
-		cub->ray.diry = -1;
-	if (cub->player.dir == 'N')
-		cub->ray.plany = 0.66;
-	if (cub->player.dir == 'S')
-		cub->ray.plany = -0.66;
-	if (cub->player.dir == 'E')
-		cub->ray.planx = 0.66;
-	if (cub->player.dir == 'W')
-		cub->ray.planx = -0.66;
+	{
+		cub->dirx = -1;
+		cub->ray.plany = -cub->dirx * FOV;
+	}
 }
 
 void	ft_init2(t_cub *cub)
@@ -42,8 +46,8 @@ void	ft_init2(t_cub *cub)
 	cub->rotate_left = 0;
 	cub->ray.posx = (double)cub->player.x + 0.5;
 	cub->ray.posy = (double)cub->player.y + 0.5;
-	cub->ray.dirx = 0;
-	cub->ray.diry = 0;
+	cub->dirx = 0;
+	cub->diry = 0;
 	cub->ray.planx = 0;
 	cub->ray.plany = 0;
 	ft_init_dir(cub);
@@ -66,13 +70,13 @@ void	ft_init3(t_cub *cub)
 	cub->ray.hit = 0;
 	cub->ray.perpwalldist = 0;
 	cub->ray.camerax = 2 * cub->ray.x / (double)cub->rx - 1;
-	cub->ray.raydirx = cub->ray.dirx + cub->ray.planx * \
+	cub->ray.raydirx = cub->dirx + cub->ray.planx * \
 						cub->ray.camerax;
-	cub->ray.raydiry = cub->ray.diry + cub->ray.plany * \
+	cub->ray.raydiry = cub->diry + cub->ray.plany * \
 						cub->ray.camerax;
 	cub->ray.mapx = (int)cub->ray.posx;
 	cub->ray.mapy = (int)cub->ray.posy;
 	cub->ray.movespeed = 0.1;
-	cub->ray.rotspeed = 0.033 * 1.8;
+	cub->ray.rotspeed = 0.033;
 	ft_init_more3(cub);
 }

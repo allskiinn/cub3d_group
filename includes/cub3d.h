@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 21:19:04 by aliberal          #+#    #+#             */
-/*   Updated: 2026/01/09 10:27:54 by aliberal         ###   ########.fr       */
+/*   Updated: 2026/01/09 19:14:28 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define LEFT_A_Q		97
 # define BUFFER_SIZE	4096
 # define VERTICAL		0
+# define FOV			0.66
 
 typedef struct s_player
 {
@@ -53,8 +54,6 @@ typedef struct s_ray
 {
 	double	posx;
 	double	posy;
-	double	dirx;
-	double	diry;
 	double	planx;
 	double	plany;
 	double	camerax;
@@ -118,6 +117,8 @@ typedef struct s_cub
 	t_map			map;
 	t_player		player;
 	t_ray			ray;
+	double			dirx;
+	double			diry;
 	t_img			img;
 	t_img			textures[4];
 	void			*mlx_ptr;
