@@ -26,10 +26,11 @@ static void	ft_calc_texture_properties(t_cub *cub)
 			+ cub->ray.perpwalldist * cub->ray.raydirx;
 	}
 	cub->tex.wallx -= floor(cub->tex.wallx);
-	cub->tex.step = 1.0 * cub->textures[0].height / cub->ray.lineheight;
+	cub->tex.step = 1.0 * cub->textures[cub->tex.texdir].height
+		/ cub->ray.lineheight;
 	cub->tex.texx = (int)(cub->tex.wallx
 			* (double)cub->textures[cub->tex.texdir].width);
-	if ((cub->ray.side == 0 && cub->ray.raydirx > 0)
+	if ((cub->ray.side == VERTICAL && cub->ray.raydirx > 0)
 		|| (cub->ray.side == 1 && cub->ray.raydiry < 0))
 		cub->tex.texx = cub->textures[cub->tex.texdir].width
 			- cub->tex.texx - 1;
@@ -54,8 +55,11 @@ static void	ft_draw_wall_loop(t_cub *cub, int x)
 	y = cub->ray.drawstart - 1;
 	while (++y <= cub->ray.drawend)
 	{
-		cub->tex.texy = (int)cub->tex.texpos
-			& (cub->textures[cub->tex.texdir].height - 1);
+		cub->tex.texy = (int)cub->tex.texpos;
+		if (cub->tex.texy < 0)
+			cub->tex.texy = 0;
+		if (cub->tex.texy >= cub->textures[cub->tex.texdir].height)
+			cub->tex.texy = cub->textures[cub->tex.texdir].height - 1;
 		cub->tex.texpos += cub->tex.step;
 		tex_color = cub->textures[cub->tex.texdir].addr[cub->tex.texy
 			* cub->textures[cub->tex.texdir].line_len / 4
@@ -70,7 +74,6 @@ int	ft_color_column(t_cub *cub)
 	int		i;
 
 	j = -1;
-	cub->ray.drawend = cub->ry - cub->ray.drawstart;
 	i = cub->ray.drawend;
 	while (++j < cub->ray.drawstart)
 	{
