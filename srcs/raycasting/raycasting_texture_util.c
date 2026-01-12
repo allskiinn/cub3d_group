@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycsting_textura_util.c                           :+:      :+:    :+:   */
+/*   raycasting_texture_util.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 15:39:38 by asobrinh          #+#    #+#             */
-/*   Updated: 2026/01/09 02:13:49 by aliberal         ###   ########.fr       */
+/*   Updated: 2026/01/12 00:36:18 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,18 @@ void	ft_get_texture(t_cub *cub)
 
 int	ft_get_texdir(t_ray *ray)
 {
-	if (ray->side == 0)
+	if (ray->side == VERTICAL)
 	{
 		if (ray->raydirx < 0)
-			return (0);
+			return (2);
 		else
-			return (1);
+			return (3);
 	}
 	else
 	{
 		if (ray->raydiry < 0)
-			return (2);
+			return (0);
 		else
-			return (3);
+			return (1);
 	}
 }

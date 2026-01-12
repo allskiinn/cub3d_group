@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 21:19:04 by aliberal          #+#    #+#             */
-/*   Updated: 2026/01/09 19:14:28 by aliberal         ###   ########.fr       */
+/*   Updated: 2026/01/12 01:16:22 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,7 +154,7 @@ void		check_text_color_error(t_cub *cub);
 */
 int			ft_charinstr(char *str, char c);
 int			ft_emptyline(char *str);
-int			ft_nb_comma(const char *str);
+int			ft_check_numbers(const char *str);
 int			ft_walls(t_cub *cub);
 int			ft_checkplayer(t_cub *cub);
 int			ft_check_player_around(t_cub *cub);

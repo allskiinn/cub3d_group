@@ -6,7 +6,7 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 01:34:43 by aliberal          #+#    #+#             */
-/*   Updated: 2025/07/27 08:23:31 by aliberal         ###   ########.fr       */
+/*   Updated: 2026/01/12 01:15:37 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void	ft_atoi3_check(const char *str, t_cub *cub)
 	}
 	if (j != 2)
 		cub->error = 8;
-	if (ft_nb_comma(str) != 2)
-		cub->error = 8;
+	if (ft_check_numbers(str) == 1)
+		cub->error = 9;
 }
 
 void	ft_atoi3(const char *str, t_cub *cub, char type)

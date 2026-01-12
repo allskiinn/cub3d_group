@@ -6,25 +6,25 @@
 /*   By: aliberal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 01:34:43 by aliberal          #+#    #+#             */
-/*   Updated: 2025/07/02 17:36:37 by aliberal         ###   ########.fr       */
+/*   Updated: 2026/01/12 01:15:45 by aliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../includes/cub3d.h"
 
-int	ft_nb_comma(const char *str)
+int	ft_check_numbers(const char *str)
 {
 	int	i;
-	int	j;
 
 	i = -1;
-	j = 0;
 	while (str[++i])
 	{
-		if (str[i] == ',')
-			j++;
+		if ((str[i] < '0' || str[i] > '9') && str[i] != '+'
+				&& str[i] != ',' && str[i] != 'C' && str[i] != 'F'
+				&& str[i] != ' ' && str[i] != '\t')
+			return (1);
 	}
-	return (j);
+	return (0);
 }
 
 int	ft_strlen2(char *str)
